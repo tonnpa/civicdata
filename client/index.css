@@ -1,0 +1,13 @@
+@import url('styles/bootstrap.css');
+@import url('styles/bootstrap-theme.css');
+
+body {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.image-caption {
+	text-align: center;
+}
