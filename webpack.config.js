@@ -37,6 +37,10 @@ module.exports = {
     ]
   },
   plugins: [HtmlWebpackPluginConfig],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules'],
+  },
   watchOptions: {
     poll: true
   }
