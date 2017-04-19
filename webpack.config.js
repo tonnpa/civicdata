@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-
+const BundleTracker = require('webpack-bundle-tracker');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
@@ -13,7 +13,8 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+    publicPath: '/static/',
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -36,7 +37,10 @@ module.exports = {
       },
     ]
   },
-  plugins: [HtmlWebpackPluginConfig],
+  plugins: [
+    HtmlWebpackPluginConfig,
+    new BundleTracker({filename: './webpack-stats.json'}),
+    ],
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: ['node_modules'],

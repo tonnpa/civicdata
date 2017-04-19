@@ -1,0 +1,7 @@
+dj-database-url
+django
+gunicorn
+psycopg2
+whitenoise
+django-webpack-loader
+python-decouple
