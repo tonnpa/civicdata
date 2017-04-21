@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
-
+from restapi.urls import urlpatterns as restapi_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns += restapi_urls

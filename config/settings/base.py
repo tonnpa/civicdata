@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -47,9 +46,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'webpack_loader',
+    'rest_framework',
 ]
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    'restapi',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
