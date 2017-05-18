@@ -1,8 +1,14 @@
 from rest_framework.serializers import ModelSerializer
-from restapi.models import AtlantaTree
+from restapi import models
 
 
 class AtlantaTreeSerializer(ModelSerializer):
     class Meta:
-        model = AtlantaTree
+        model = models.AtlantaTree
+        fields = '__all__'
+
+
+class DatasetSerializer(ModelSerializer):
+    class Meta:
+        model = models.Dataset
         fields = '__all__'
