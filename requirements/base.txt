@@ -5,3 +5,5 @@ psycopg2
 whitenoise
 django-webpack-loader
 python-decouple
+djangorestframework
+
