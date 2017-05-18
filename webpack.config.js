@@ -29,11 +29,11 @@ module.exports = {
       },
       { 
         test: /\.(eot|svg|ttf|woff|woff2)$/, 
-        use: 'url-loader?limit=100000',
+        use: 'url-loader?limit=100000&name=[name].[ext]',
       },
       { 
-        test: /\.(png|jpg)$/, 
-        use: 'url-loader?limit=100000',
+        test: /\.(png|jpg|ico)$/,
+        use: 'url-loader?limit=100000&name=[name].[ext]',
       },
     ]
   },

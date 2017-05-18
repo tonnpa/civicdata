@@ -7,6 +7,9 @@ import Preview from './Preview';
 import Snapshot from './Snapshot';
 import Tag from './Tag';
 
+
+let excel_file = require('file-loader?emitFile=false!../../data/TreesAtlanta.xlsx');
+
 class Dataset extends React.Component {
 	render() {
 		let tags = [];
@@ -22,6 +25,7 @@ class Dataset extends React.Component {
 						<span><b>Source:</b> {this.props.source}</span>
 						<p>"{this.props.description}"</p>
 						<p>{tags}</p>
+                        <a href={excel_file} download="TreesAtlanta.xlsx">Download link</a>
 						<Preview hidden={this.props.hidePreview}
 								 onClick={this.props.onPreviewClick}/>
 					</Col>

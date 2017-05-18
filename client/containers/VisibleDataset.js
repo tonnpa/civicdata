@@ -5,7 +5,6 @@ import {togglePreview} from '../actions/Actions';
 import DatasetList from '../components/DatasetList';
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return state;
 };
 
