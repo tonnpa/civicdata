@@ -2,7 +2,7 @@
 
 import ActionTypes from '../actions/ActionTypes';
 
-function dashboard(state = [], action) {
+function dashboard(state = {datasets: []}, action) {
 	switch (action.type) {
 		case ActionTypes.TOGGLE_PREVIEW:
 			return Object.assign({}, state, {
@@ -15,6 +15,9 @@ function dashboard(state = [], action) {
 					return dataset;
 				})
 			});
+
+        case ActionTypes.INITIALIZE_STATE:
+            return action.initialState;
 
         case ActionTypes.REQUEST_RECORDS:
             return Object.assign({}, state, {

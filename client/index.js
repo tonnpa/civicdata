@@ -10,23 +10,20 @@ import {createLogger} from 'redux-logger';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 
-import {fetchRecords} from './actions/Actions';
+import {initializeState, fetchRecords} from './actions/Actions';
 
 import './index.css';
 
 require('./images/favicon.ico');
-const treeCanopy = require('./images/treesatlanta.png');
-const treeSpecies = require('./images/treespecies.png');
-const chattahoochee = require('./images/chattahoochee.png');
 
 let loggerMiddleware = createLogger();
 const store = createStore(dashboard,
-    {datasets: DATASETS},
     applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
+store.dispatch(initializeState(DATASETS));
 
-store.dispatch(fetchRecords('atltrees')).then(
-    () => console.log(store.getState()));
+// store.dispatch(fetchRecords('atltrees')).then(
+//     () => console.log(store.getState()));
 
 ReactDOM.render(
 	<Provider store={store}>

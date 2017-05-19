@@ -1,5 +1,9 @@
 'use strict';
 
+const treeCanopy = require('./images/treesatlanta.png');
+const treeSpecies = require('./images/treespecies.png');
+const chattahoochee = require('./images/chattahoochee.png');
+
 const DATASETS = [
 	{
 		id: 'treecanopy',

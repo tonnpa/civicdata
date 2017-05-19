@@ -14,6 +14,15 @@ export function togglePreview(id) {
 	}
 }
 
+export function initializeState(datasets) {
+    return {
+        type: ActionTypes.INITIALIZE_STATE,
+        initialState: {
+            datasets: datasets
+        }
+    }
+}
+
 // When it's time to fetch the records for some dataset,
 // we will dispatch a REQUEST_RECORDS action
 export function requestRecords(id) {
