@@ -70,7 +70,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '{}/assets'.format(BASE_DIR),
+            os.path.join(BASE_DIR, 'assets'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,8 +139,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets'),
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 WEBPACK_LOADER = {
     'DEFAULT': {

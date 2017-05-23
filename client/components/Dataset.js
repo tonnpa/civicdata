@@ -36,7 +36,7 @@ class Dataset extends React.Component {
                             {/*onClick={this.props.onPreviewClick}/>*/}
                         </Col>
                         <Col md={4}>
-                            <Snapshot image_name={this.props.file_name}/>
+                            <Snapshot {...this.props}/>
                         </Col>
                     </Row>
                 </Grid>
