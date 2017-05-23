@@ -2,32 +2,32 @@
 
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
+import FaDownload from 'react-icons/lib/fa/download';
 
-import Preview from './Preview';
 import Snapshot from './Snapshot';
 import Tag from './Tag';
 
 
-let excel_file = require('file-loader?emitFile=false!../../data/TreesAtlanta.xlsx');
-
 class Dataset extends React.Component {
 	render() {
-		let tags = [];
+		const tags = [];
 		tags.push(<Tag key={0} bsStyle={'primary'} text={this.props.date}/>);
-		tags.push(<Tag key={1} bsStyle={'success'} text={this.props.format}/>);
-		tags.push(<Tag key={2} bsStyle={'warning'} text={this.props.size}/>);
+		// tags.push(<Tag key={1} bsStyle={'success'} text={this.props.format}/>);
+		// tags.push(<Tag key={2} bsStyle={'warning'} text={this.props.size}/>);
 
 		return (
 			<Grid fluid={true}>
 				<Row>
-					<h2>{this.props.name}</h2>
 					<Col md={8}>
-						<span><b>Source:</b> {this.props.source}</span>
-						<p>"{this.props.description}"</p>
+                        <h2>{this.props.title}</h2>
+                        <hr/>
+						<span><b>Collector:</b> {this.props.collector}</span>
+						<p>{this.props.description}</p>
 						<p>{tags}</p>
-                        <a href={excel_file} download="TreesAtlanta.xlsx">Download link</a>
-						<Preview hidden={this.props.hidePreview}
-								 onClick={this.props.onPreviewClick}/>
+                        <a href={`/static/${this.props.file_name}`}
+                           download={this.props.file_name}>Download <FaDownload/></a>
+                        {/*<Preview hidden={this.props.hidePreview}*/}
+								 {/*onClick={this.props.onPreviewClick}/>*/}
 					</Col>
 					<Col md={4}>
 						<Snapshot image={this.props.image}

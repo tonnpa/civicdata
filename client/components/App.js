@@ -7,7 +7,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Atlanta Environmental Datasets</h1>
+				<h1>Civic Data</h1>
 				<VisibleDataset />
 			</div>
 		);
