@@ -6,4 +6,4 @@ staticfiles
 db.sqlite3
 .env
 .idea
-data
+assets

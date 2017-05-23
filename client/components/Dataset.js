@@ -30,7 +30,7 @@ class Dataset extends React.Component {
                             <span><b>Collector:</b> {this.props.collector}</span>
                             <p>{this.props.description}</p>
                             {this.TagList()}
-                            <a href={`/static/${this.props.file_name}`}
+                            <a href={`/static/data/${this.props.file_name}`}
                                download={this.props.file_name}>Download <FaDownload/></a>
                             {/*<Preview hidden={this.props.hidePreview}*/}
                             {/*onClick={this.props.onPreviewClick}/>*/}

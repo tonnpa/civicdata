@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('assets'),
     publicPath: '/static/',
     filename: '[name].js'
   },

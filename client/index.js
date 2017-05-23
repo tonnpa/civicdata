@@ -14,8 +14,6 @@ import {initializeState, fetchRecords} from './actions/Actions';
 
 import './index.css';
 
-require('./images/favicon.ico');
-
 let loggerMiddleware = createLogger();
 const store = createStore(dashboard,
     applyMiddleware(thunkMiddleware, loggerMiddleware)
