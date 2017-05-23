@@ -15,6 +15,9 @@ export function togglePreview(id) {
 }
 
 export function initializeState(datasets) {
+    // add initial UI states
+    // add default missing fields for datasets
+
     return {
         type: ActionTypes.INITIALIZE_STATE,
         initialState: {
