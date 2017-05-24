@@ -31,7 +31,9 @@ class Dataset extends React.Component {
                             <p>{this.props.description}</p>
                             {this.TagList()}
                             <a href={`/static/data/${this.props.file_name}`}
-                               download={this.props.file_name}>Download <FaDownload/></a>
+                               download={this.props.file_name}
+                               className="btn-sm btn-primary"
+                               role="button">Download <FaDownload/></a>
                             {/*<Preview hidden={this.props.hidePreview}*/}
                             {/*onClick={this.props.onPreviewClick}/>*/}
                         </Col>
