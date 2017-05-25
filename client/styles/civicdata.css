@@ -1,3 +1,27 @@
+body {
+    background-color: #323232;
+}
+
 .dataset-container {
+    background-color: white;
     margin: 1em;
+}
+
+.img-header {
+    background-image: url('../../assets/civicdata.png');
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+
+.tag {
+    color: #51434C
+}
+
+.tag-date {
+    background-color: #9BBBA4
+}
+
+.tag-format {
+    background-color: #E3BF81
 }

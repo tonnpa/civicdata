@@ -4,11 +4,14 @@ import React from 'react';
 import {Label} from 'react-bootstrap';
 
 
-const Tag = ({text, bsStyle}) => (
+export const Tag = ({text, tagStyle}) => (
 	<span>
-		<Label bsStyle={bsStyle}>{text}</Label>
+		<Label className={`tag ${tagStyle}`}>{text}</Label>
 	   	&emsp;
 	</span>
 );
 
-export default Tag;
+export const TagStyles = {
+    DATE: 'tag-date',
+    FORMAT: 'tag-format',
+};

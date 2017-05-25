@@ -7,7 +7,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Civic Data</h1>
+				<h1 className="img-header text-hide">Civic Data</h1>
 				<VisibleDataset />
 			</div>
 		);

@@ -5,20 +5,9 @@ import {Col, Grid, Row} from "react-bootstrap";
 import FaDownload from "react-icons/lib/fa/download";
 
 import Snapshot from "./Snapshot";
-import Tag from "./Tag";
-
+import TagList from "./TagList";
 
 class Dataset extends React.Component {
-    TagList() {
-        return (
-            <ul className="list-inline">
-                <li><Tag key={0} bsStyle={'primary'} text="date"/></li>
-                <li><Tag key={1} bsStyle={'success'} text="format"/></li>
-                <li><Tag key={2} bsStyle={'warning'} text="size"/></li>
-            </ul>
-        );
-    }
-
     render() {
         return (
             <div className="dataset-container">
@@ -29,10 +18,10 @@ class Dataset extends React.Component {
                             <hr/>
                             <span><b>Collector:</b> {this.props.collector}</span>
                             <p>{this.props.description}</p>
-                            {this.TagList()}
+                            <TagList {...this.props}/>
                             <a href={`/static/data/${this.props.file_name}`}
                                download={this.props.file_name}
-                               className="btn-sm btn-primary"
+                               className="btn-sm btn-warning"
                                role="button">Download <FaDownload/></a>
                             {/*<Preview hidden={this.props.hidePreview}*/}
                             {/*onClick={this.props.onPreviewClick}/>*/}
