@@ -1,17 +1,18 @@
 'use strict';
 
-import React from 'react';
-import VisibleDataset from '../containers/VisibleDataset';
+import React from "react";
+import VisibleDataset from "../containers/VisibleDataset";
+import SideMenu from "../components/SideMenu";
 
 class App extends React.Component {
-	render() {
-		return (
-			<div>
-				<h1 className="img-header text-hide">Civic Data</h1>
-				<VisibleDataset />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div>
+                <SideMenu />
+                <VisibleDataset />
+            </div>
+        );
+    }
 }
 
 export default App;

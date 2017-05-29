@@ -1,18 +1,25 @@
 'use strict';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import dashboard from './reducers/dashboard';
-import fetch from 'isomorphic-fetch';
-import thunkMiddleware from 'redux-thunk';
-import {createLogger} from 'redux-logger';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+global.jQuery = require('jquery');
+require('bootstrap');
 
-import {initializeState, fetchRecords} from './actions/Actions';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap-theme.min.css';
 
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+
+import App from "./components/App";
+import dashboard from "./reducers/dashboard";
+import fetch from "isomorphic-fetch";
+import thunkMiddleware from "redux-thunk";
+import {createLogger} from "redux-logger";
+import {applyMiddleware, createStore} from "redux";
+import {Provider} from "react-redux";
+
+import {initializeState} from "./actions/Actions";
+
+import "./index.css";
 
 let loggerMiddleware = createLogger();
 const store = createStore(dashboard,
@@ -24,8 +31,8 @@ fetch('api/datainfo')
     .then(data => store.dispatch(initializeState(data.results)));
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
