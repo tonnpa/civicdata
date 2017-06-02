@@ -5,6 +5,7 @@ require('bootstrap');
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -29,6 +30,9 @@ const store = createStore(dashboard,
 fetch('api/datainfo')
     .then(response => response.json())
     .then(data => store.dispatch(initializeState(data.results)));
+
+window.React = React;
+window.store = store;
 
 ReactDOM.render(
     <Provider store={store}>

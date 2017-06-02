@@ -10,7 +10,7 @@ import TagList from "./TagList";
 class Dataset extends React.Component {
     render() {
         return (
-            <div className="dataset-container">
+            <div className="dataset-container" id={this.props.id}>
                 <Grid fluid={true}>
                     <Row>
                         <Col md={8}>

@@ -1,15 +1,15 @@
 'use strict';
 
 import React from "react";
-import VisibleDataset from "../containers/VisibleDataset";
-import SideMenu from "../components/SideMenu";
+import DatasetList from "../containers/DatasetList";
+import SideMenu from "../containers/SideMenu";
 
 class App extends React.Component {
     render() {
         return (
             <div>
                 <SideMenu />
-                <VisibleDataset />
+                <DatasetList />
             </div>
         );
     }

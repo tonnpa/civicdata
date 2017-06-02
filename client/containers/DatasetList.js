@@ -16,9 +16,9 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-const VisibleDataset = connect(
+const Container = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(DatasetList);
 
-export default VisibleDataset;
+export default Container;
