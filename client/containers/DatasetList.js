@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import {connect} from 'react-redux'
-import {togglePreview} from '../actions/Actions';
-import DatasetList from '../components/DatasetList';
+import {connect} from "react-redux";
+import {togglePreview} from "../actions/Actions";
+import DatasetList from "../components/DatasetList";
 
 const mapStateToProps = (state) => {
 	return state;

@@ -2,9 +2,9 @@
  * Created by tonnpa on 5/25/17.
  */
 
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
 import {Tag, TagStyles} from "./Tag";
 

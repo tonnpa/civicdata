@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-import ActionTypes from '../actions/ActionTypes';
+import ActionTypes from "../actions/ActionTypes";
 
 function dashboard(state = {datasets: []}, action) {
 	switch (action.type) {

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const treeCanopy = require('./images/treesatlanta.png');
 const treeSpecies = require('./images/treespecies.png');

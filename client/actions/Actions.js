@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-import ActionTypes from './ActionTypes';
-import fetch from 'isomorphic-fetch';
+import ActionTypes from "./ActionTypes";
+import fetch from "isomorphic-fetch";
 
 /*
  * action creators

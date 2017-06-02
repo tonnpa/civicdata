@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-import React from 'react';
-import {Button, Table} from 'react-bootstrap';
+import React from "react";
+import {Button, Table} from "react-bootstrap";
 
 const visibility = {
 	display: 'none',

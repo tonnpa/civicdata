@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-import React from 'react';
-import {Label} from 'react-bootstrap';
+import React from "react";
+import {Label} from "react-bootstrap";
 
 
 export const Tag = ({text, tagStyle}) => (
