@@ -15,8 +15,16 @@ const SideMenu = ({datasets = []}) => (
                     <a href="#"><i className="fa fa-database fa-lg"></i> Datasets <span className="arrow"></span></a>
                 </li>
                 <ul className="sub-menu collapse" id="datasets">
-                    {datasets.map(dataset =>
-                    <li key={dataset.id}><a href={`#${dataset.id}`}>{dataset.title}</a></li>)}
+                    {
+                        datasets.map(dataset =>
+                            <li key={dataset.id}>
+                                <a href={`#${dataset.id}`}>
+                                    <i className="fa fa-chevron-right"></i>
+                                    {dataset.title}
+                                </a>
+                            </li>
+                        )
+                    }
                 </ul>
             </ul>
         </div>

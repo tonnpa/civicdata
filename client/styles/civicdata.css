@@ -68,19 +68,6 @@ body {
     margin: 0px;
     line-height: 35px;
     cursor: pointer;
-    /*
-      .collapsed{
-         .arrow:before{
-                   font-family: FontAwesome;
-                   content: "\f053";
-                   display: inline-block;
-                   padding-left:10px;
-                   padding-right: 10px;
-                   vertical-align: middle;
-                   float:right;
-              }
-       }
-  */
 }
 
 .nav-side-menu ul :not(collapsed) .arrow:before,
@@ -127,8 +114,6 @@ body {
 .nav-side-menu ul .sub-menu li:before,
 .nav-side-menu li .sub-menu li:before {
     font-family: FontAwesome;
-    content: "\f105";
-    display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
     vertical-align: middle;
@@ -143,6 +128,7 @@ body {
 .nav-side-menu li a {
     text-decoration: none;
     color: #e1ffff;
+    display: block;
 }
 
 .nav-side-menu li a i {
