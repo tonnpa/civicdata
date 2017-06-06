@@ -23,8 +23,6 @@ class Dataset extends React.Component {
                                download={this.props.file_name}
                                className="btn-sm btn-warning"
                                role="button">Download <FaDownload/></a>
-                            {/*<Preview hidden={this.props.hidePreview}*/}
-                            {/*onClick={this.props.onPreviewClick}/>*/}
                         </Col>
                         <Col md={4}>
                             <Snapshot {...this.props}/>

@@ -1,24 +1,14 @@
 "use strict";
 
 import {connect} from "react-redux";
-import {togglePreview} from "../actions/Actions";
 import DatasetList from "../components/DatasetList";
 
 const mapStateToProps = (state) => {
-	return state;
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onPreviewClick: (id) => {
-			dispatch(togglePreview(id))
-		}
-	};
+    return state;
 };
 
 const Container = connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
 )(DatasetList);
 
 export default Container;

@@ -14,6 +14,13 @@ export function togglePreview(id) {
 	}
 }
 
+export function changeFilterText(filterText) {
+    return {
+        type: ActionTypes.CHANGE_FILTER_TEXT,
+        filterText
+    }
+}
+
 export function initializeState(datasets) {
     // add initial UI states
     // add default missing fields for datasets
@@ -21,7 +28,8 @@ export function initializeState(datasets) {
     return {
         type: ActionTypes.INITIALIZE_STATE,
         initialState: {
-            datasets: datasets
+            datasets: datasets,
+            filterText: "",
         }
     }
 }

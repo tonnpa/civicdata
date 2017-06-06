@@ -5,17 +5,22 @@
 
 import {connect} from "react-redux";
 import SideMenu from "../components/SideMenu";
+import {changeFilterText} from "../actions/Actions";
 
-const mapStateToProps = (state) => {
-    return {
-        datasets: state.datasets.map(dataset => {
-            return {
-                id: dataset.id,
-                title: dataset.title,
-            }
-        })
-    }
-};
+const mapStateToProps = (state) => ({
+    datasets: state.datasets.map(dataset => {
+        return {
+            id: dataset.id,
+            title: dataset.title,
+        }
+    }),
+    filterText: state.filterText,
+});
 
-const Container = connect(mapStateToProps)(SideMenu);
+const mapDispatchToProps = (dispatch) => ({
+    onSearchInputChange: (text) => dispatch(changeFilterText(text))
+});
+
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(SideMenu);
 export default Container;
