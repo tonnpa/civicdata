@@ -5,7 +5,8 @@ import Dataset from "./Dataset";
 import {Grid} from "react-bootstrap";
 
 const DatasetList = ({datasets, filterText}) => {
-    const visibleDatasets = datasets.filter(dataset => dataset.title.indexOf(filterText) !== -1);
+    const visibleDatasets = datasets.filter(dataset =>
+        dataset.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1);
 
     return (
         <div id="main">

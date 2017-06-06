@@ -7,23 +7,19 @@ import React from "react";
 import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
 
 const SearchBar = ({filterText, onSearchInputChange}) => {
-    let _value;
+    let _filterText;
 
     return (
         <FormGroup controlId="dataset-filter">
             <ControlLabel htmlFor="dataset-filter" srOnly>Search</ControlLabel>
             <FormControl type="text"
-                         placeholder="Search"
+                         placeholder="Find data easily."
                          value={filterText}
-                         ref={input => _value = input}
+                         ref={input => _filterText = input}
                          onChange={(event) => onSearchInputChange(event.target.value)}
             />
         </FormGroup>
     );
-};
-
-SearchBar.defaultProps = {
-    value: "",
 };
 
 export default SearchBar;

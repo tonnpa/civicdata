@@ -22,5 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(SideMenu);
+const Container = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SideMenu);
 export default Container;
