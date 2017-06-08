@@ -1,14 +1,14 @@
-"use strict";
+"use strict"
 
-import {connect} from "react-redux";
-import DatasetList from "../components/DatasetList";
+import {connect} from "react-redux"
+import DatasetList from "../components/DatasetList"
 
 const mapStateToProps = (state) => {
-    return state;
-};
+    return state
+}
 
 const Container = connect(
     mapStateToProps,
-)(DatasetList);
+)(DatasetList)
 
-export default Container;
+export default Container

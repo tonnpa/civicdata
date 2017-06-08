@@ -1,10 +1,10 @@
 /**
  * Created by tonnpa on 5/29/17.
  */
-"use strict";
+"use strict"
 
-import React from "react";
-import SearchBar from "./SearchBar";
+import React from "react"
+import SearchBar from "./SearchBar"
 
 const SideMenu = ({datasets = [], filterText, onSearchInputChange}) => (
     <div className="nav-side-menu">
@@ -34,6 +34,6 @@ const SideMenu = ({datasets = [], filterText, onSearchInputChange}) => (
             </ul>
         </div>
     </div>
-);
+)
 
-export default SideMenu;
+export default SideMenu

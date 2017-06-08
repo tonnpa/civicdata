@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 const ActionTypes = {
     INITIALIZE_STATE: 'INITIALIZE_STATE',
@@ -6,6 +6,6 @@ const ActionTypes = {
 
     // REQUEST_RECORDS: 'REQUEST_RECORDS',
     // RECEIVE_RECORDS: 'RECEIVE_RECORDS',
-};
+}
 
-export default ActionTypes;
+export default ActionTypes

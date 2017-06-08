@@ -1,11 +1,11 @@
-"use strict";
+"use strict"
 
-import React from "react";
-import {Col, Grid, Row, Tab, Table, Tabs} from "react-bootstrap";
+import React from "react"
+import {Col, Grid, Row, Tab, Table, Tabs} from "react-bootstrap"
 
-import DownloadButton from "./DownloadButton";
-import Snapshot from "./Snapshot";
-import TagList from "./TagList";
+import DownloadButton from "./DownloadButton"
+import Snapshot from "./Snapshot"
+import TagList from "./TagList"
 
 const table = (
     <Table striped bordered condensed hover responsive>
@@ -37,7 +37,7 @@ const table = (
         </tr>
         </tbody>
     </Table>
-);
+)
 
 const Dataset = (props) => (
     <div className="dataset-container" id={props.id}>
@@ -68,6 +68,6 @@ const Dataset = (props) => (
             </Row>
         </Grid>
     </div>
-);
+)
 
-export default Dataset;
+export default Dataset

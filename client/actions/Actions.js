@@ -1,11 +1,11 @@
-"use strict";
+"use strict"
 
-import ActionTypes from "./ActionTypes";
+import ActionTypes from "./ActionTypes"
 
 export const changeFilterText = (filterText) => ({
     type: ActionTypes.CHANGE_FILTER_TEXT,
     filterText
-});
+})
 
 export const initializeState = (datasets) => ({
     type: ActionTypes.INITIALIZE_STATE,
@@ -13,7 +13,7 @@ export const initializeState = (datasets) => ({
         datasets: datasets,
         filterText: "",
     }
-});
+})
 
 // // When it's time to fetch the records for some dataset,
 // // we will dispatch a REQUEST_RECORDS action
@@ -27,7 +27,7 @@ export const initializeState = (datasets) => ({
 // // When the network request comes through,
 // // we will dispatch RECEIVE_RECORDS
 // export function receiveRecords(id, json) {
-//     console.log(json);
+//     console.log(json)
 //     return {
 //         type: ActionTypes.RECEIVE_RECORDS,
 //         id,
@@ -38,9 +38,9 @@ export const initializeState = (datasets) => ({
 //
 // export function fetchRecords(id) {
 //     return function (dispatch) {
-//         dispatch(requestRecords(id));
+//         dispatch(requestRecords(id))
 //         return fetch(`/api/${id}`)
 //             .then(response => response.json())
-//             .then(json => dispatch(receiveRecords(id, json)));
+//             .then(json => dispatch(receiveRecords(id, json)))
 //     }
 // }

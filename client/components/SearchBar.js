@@ -1,13 +1,13 @@
 /**
  * Created by tonnpa on 6/5/17.
  */
-"use strict";
+"use strict"
 
-import React from "react";
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
+import React from "react"
+import {ControlLabel, FormControl, FormGroup} from "react-bootstrap"
 
 const SearchBar = ({filterText, onSearchInputChange}) => {
-    let _filterText;
+    let _filterText
 
     return (
         <FormGroup controlId="dataset-filter">
@@ -19,7 +19,7 @@ const SearchBar = ({filterText, onSearchInputChange}) => {
                          onChange={(event) => onSearchInputChange(event.target.value)}
             />
         </FormGroup>
-    );
-};
+    )
+}
 
-export default SearchBar;
+export default SearchBar
