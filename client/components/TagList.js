@@ -12,7 +12,6 @@ function parseDate(date_from, date_to) {
     if (date_from === date_to) {
         return date_from;
     }
-    console.log(date_from);
     return `${date_from} - ${date_to}`;
 }
 

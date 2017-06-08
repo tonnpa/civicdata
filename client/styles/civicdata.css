@@ -12,6 +12,14 @@ body {
     padding: 1em;
 }
 
+.dataset-description {
+    padding: 1em;
+}
+
+.dataset-image {
+    margin: 1em;
+}
+
 .img-header {
     background-image: url("../../assets/civicdata.png");
     background-position: center;
