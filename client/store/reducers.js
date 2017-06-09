@@ -13,6 +13,35 @@ const filterText = (state = '', action) =>
         action.filterText :
         state
 
+const isFetching = (state = {}, action) => {
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            const isFetching = {}
+            action.datasets.forEach(dataset => {
+                isFetching[dataset.id] = false
+            })
+            return isFetching
+
+        case ActionTypes.FETCH_RECORDS:
+            return Object.assign({}, state, {
+                [action.dataset_id]: true
+            })
+
+        case ActionTypes.RECEIVE_RECORDS:
+            return Object.assign({}, state, {
+                [action.dataset_id]: false
+            })
+
+        case ActionTypes.CANCEL_FETCHING:
+            return Object.assign({}, state, {
+                [action.dataset_id]: false
+            })
+
+        default:
+            return state
+    }
+}
+
 const previewContent = (state = {}, action) => {
     if (action.type === ActionTypes.INITIALIZE_STATE) {
         const previewContent = {}
@@ -24,20 +53,9 @@ const previewContent = (state = {}, action) => {
     return state
 }
 
-const isFetching = (state = {}, action) => {
-    if (action.type === ActionTypes.INITIALIZE_STATE) {
-        const isFetching = {}
-        action.datasets.forEach(dataset => {
-            isFetching[dataset.id] = false
-        })
-        return isFetching
-    }
-    return state
-}
-
 export default combineReducers({
     datasets,
     filterText,
-    previewContent,
     isFetching,
+    previewContent,
 })

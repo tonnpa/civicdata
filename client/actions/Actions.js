@@ -1,7 +1,7 @@
 'use strict'
 
-import ActionTypes from "./ActionTypes";
-import fetch from "isomorphic-fetch";
+import ActionTypes from './ActionTypes';
+import fetch from 'isomorphic-fetch';
 
 export const changeFilterText = (filterText) => ({
     type: ActionTypes.CHANGE_FILTER_TEXT,

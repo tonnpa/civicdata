@@ -1,11 +1,10 @@
 /**
  * Created by tonnpa on 5/25/17.
  */
+'use strict'
 
-"use strict"
-
-import React from "react"
-import {Tag, TagStyles} from "./Tag"
+import React from 'react'
+import {Tag, TagStyles} from './Tag'
 
 function parseDate(date_from, date_to) {
     if (date_from === date_to) {

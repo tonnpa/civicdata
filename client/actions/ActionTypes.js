@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 const ActionTypes = {
     INITIALIZE_STATE: 'INITIALIZE_STATE',
