@@ -30,12 +30,6 @@ fetch('api/datainfo')
     .then(data => store.dispatch(
         initializeState(data.results))
     )
-    .then(() => store.dispatch(
-        fetchRecords('datainfo')
-    ))
-    .then(() => store.dispatch(
-        fetchRecords('datainfo')
-    ))
 
 window.React = React
 window.store = store

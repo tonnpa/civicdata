@@ -43,14 +43,26 @@ const isFetching = (state = {}, action) => {
 }
 
 const previewContent = (state = {}, action) => {
-    if (action.type === ActionTypes.INITIALIZE_STATE) {
-        const previewContent = {}
-        action.datasets.forEach(dataset => {
-            previewContent[dataset.id] = undefined
-        })
-        return previewContent
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            const previewContent = {}
+            action.datasets.forEach(dataset => {
+                previewContent[dataset.id] = undefined
+            })
+            return previewContent
+
+        case ActionTypes.RECEIVE_RECORDS:
+            return Object.assign({}, state, {
+                [action.dataset_id]: {
+                    header: action.header,
+                    body: action.body,
+                }
+            })
+
+        default:
+            return state
     }
-    return state
+
 }
 
 export default combineReducers({

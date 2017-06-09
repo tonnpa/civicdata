@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import SideMenu from '../components/SideMenu'
 import {changeFilterText} from '../actions/Actions'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     datasets: state.datasets.map(dataset => {
         return {
             id: dataset.id,
@@ -17,8 +17,8 @@ const mapStateToProps = (state) => ({
     filterText: state.filterText,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    onSearchInputChange: (text) => dispatch(changeFilterText(text))
+const mapDispatchToProps = dispatch => ({
+    onSearchInputChange: text => dispatch(changeFilterText(text))
 })
 
 
