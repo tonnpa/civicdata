@@ -45,7 +45,6 @@ const Dataset = (props) => (
             <Row>
                 <Col md={8}>
                     <h2>{props.title}</h2>
-                    <hr/>
                     <Tabs id="dataset-details">
                         <Tab title="Description" eventKey={1}>
                             <div className="dataset-description">

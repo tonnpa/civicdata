@@ -2,15 +2,9 @@
 
 const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: './client/index.html',
-    filename: 'index.html',
-    inject: 'body'
-});
 
 module.exports = {
-    entry: './client/index.js',
+    entry: './client/store/index.js',
     output: {
         path: path.resolve('assets'),
         publicPath: '/static/',
@@ -42,7 +36,6 @@ module.exports = {
         ]
     },
     plugins: [
-        HtmlWebpackPluginConfig,
         new BundleTracker({filename: './webpack-stats.json'}),
     ],
     resolve: {
