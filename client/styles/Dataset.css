@@ -1,0 +1,31 @@
+.dataset-container {
+    background-color: white;
+    margin: 1em;
+    padding: 1em;
+}
+
+.dataset-container .table-responsive {
+    width: 100%;
+    max-height: 20em;
+    overflow: auto;
+}
+
+.dataset-description {
+    padding: 1em;
+}
+
+.dataset-image {
+    margin-top: 1em;
+}
+
+.tag {
+    color: white;
+}
+
+.tag-date {
+    background-color: #9BBBA4;
+}
+
+.tag-format {
+    background-color: #FF6D35;
+}
