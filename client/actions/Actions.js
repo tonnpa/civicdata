@@ -23,7 +23,8 @@ export const fetchRecords = (dataset_id) => (dispatch, getState) => {
             dataset_id,
         })
 
-        fetch('/api/datainfo/')
+        // fetch('/api/datainfo/')
+        fetch(`/preview?id=${dataset_id}`)
             .then(response => response.json())
             .then(data => {
                 dispatch(
@@ -37,7 +38,6 @@ export const fetchRecords = (dataset_id) => (dispatch, getState) => {
                 })
             })
     }
-
 }
 
 export const receiveRecords = (dataset_id, records) => (dispatch) => {

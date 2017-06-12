@@ -16,7 +16,7 @@ const DatasetList = ({datasets, filterText, previewContent, onPreviewLoad}) => {
                     <Dataset
                         key={dataset.id}
                         {...dataset}
-                        preview={previewContent[dataset.id]}
+                        previewContent={previewContent[dataset.id]}
                         onPreviewLoad={onPreviewLoad}
                     />
                 )}

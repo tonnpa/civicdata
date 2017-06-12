@@ -1,63 +1,36 @@
 'use strict'
 
 import React from 'react'
-import {Col, Grid, Row, Tab, Table, Tabs} from 'react-bootstrap'
+import {Col, Grid, Row, Tab, Tabs} from 'react-bootstrap'
 
-import DownloadButton from './DownloadButton'
+import DatasetDetails from './DatasetDetails'
+import Preview from './Preview'
 import Snapshot from './Snapshot'
-import TagList from './TagList'
+import {FileFormats} from '../constants'
 
-const Dataset = (props) => {
-    const header = []
-    const body = []
-    if (props.preview) {
-        props.preview.header.forEach((columnName, idx) => header.push(
-            <th key={idx}>{columnName}</th>
-        ))
-        props.preview.body.forEach((row, idx) => body.push(
-            <tr key={idx}>
-                {row.map((cell, idx) => (<td key={idx}>{cell}</td>))}
-            </tr>
-        ))
-    }
-    const table = (
-        <Table striped bordered condensed hover responsive>
-            <thead>
-            <tr>{header}</tr>
-            </thead>
-            <tbody>{body}</tbody>
-        </Table>
-    )
-
-    return (
-        <div className="dataset-container" id={props.id}>
-            <Grid fluid={true}>
-                <Row>
-                    <Col md={8}>
-                        <h2>{props.title}</h2>
-                        <Tabs id="dataset-details">
-                            <Tab title="Description" eventKey={1}>
-                                <div className="dataset-description">
-                                    <span><b>Collector:</b> {props.collector}</span>
-                                    <p>{props.description}</p>
-
-                                    <TagList {...props}/>
-                                    <DownloadButton file_name={props.file_name}/>
-                                </div>
-                            </Tab>
-                            <Tab title="Preview" eventKey={2}
-                                 onEnter={() => props.onPreviewLoad(props.id)}>
-                                {table}
-                            </Tab>
-                        </Tabs>
-                    </Col>
-                    <Col md={4}>
-                        <Snapshot {...props}/>
-                    </Col>
-                </Row>
-            </Grid>
-        </div>
-    )
-}
+const Dataset = (props) => (
+    <div className="dataset-container" id={props.id}>
+        <Grid fluid={true}>
+            <Row>
+                <Col md={8}>
+                    <h2>{props.title}</h2>
+                    <Tabs id="dataset-details">
+                        <Tab title="Description" eventKey={1}>
+                            <DatasetDetails {...props}/>
+                        </Tab>
+                        <Tab title="Preview" eventKey={2}
+                             onEnter={() => props.onPreviewLoad(props.id)}
+                             disabled={props.format === FileFormats.SHAPEFILE}>
+                            <Preview previewContent={props.previewContent}/>
+                        </Tab>
+                    </Tabs>
+                </Col>
+                <Col md={4}>
+                    <Snapshot image_file_name={props.image_file_name}/>
+                </Col>
+            </Row>
+        </Grid>
+    </div>
+)
 
 export default Dataset
