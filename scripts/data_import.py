@@ -14,6 +14,7 @@ def import_dataset_information():
                 date_from=record.DateFrom,
                 date_to=record.DateTo,
                 description=record.Description,
+                caption=record.ImageCaption,
                 format=record.Format,
                 file_name=record.FileName,
                 image_file_name=record.ImageFileName,
