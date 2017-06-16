@@ -4,6 +4,10 @@ from restapi import models
 
 
 def import_dataset_information():
+    # delete existing records
+    models.Dataset.objects.all().delete()
+
+    # import from spreadsheet
     dataset_df = pd.read_excel('assets/data/DatasetInformation.xlsx')
     for record in dataset_df.itertuples():
         try:
