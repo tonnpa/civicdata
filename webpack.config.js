@@ -42,7 +42,5 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         modules: ['node_modules'],
     },
-    watchOptions: {
-        poll: true
-    }
+    watch: true,
 }
