@@ -13,3 +13,8 @@ export const TagStyles = {
     DATE: 'tag-date',
     FORMAT: 'tag-format',
 }
+
+export const Tabs = {
+    DESCRIPTION: 1,
+    PREVIEW: 2,
+}

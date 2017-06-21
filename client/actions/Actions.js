@@ -8,12 +8,16 @@ export const changeFilterText = (filterText) => ({
     filterText
 })
 
-export const initializeState = (datasets) => {
-    return ({
-        type: ActionTypes.INITIALIZE_STATE,
-        datasets
-    })
-}
+export const initializeState = (datasets) => ({
+    type: ActionTypes.INITIALIZE_STATE,
+    datasets
+})
+
+export const selectTab = (dataset_id, tab) => ({
+    type: ActionTypes.SELECT_TAB,
+    dataset_id,
+    tab,
+})
 
 export const fetchRecords = (dataset_id) => (dispatch, getState) => {
     const state = getState()

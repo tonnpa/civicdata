@@ -2,6 +2,7 @@
 
 import {combineReducers} from 'redux'
 import ActionTypes from '../actions/ActionTypes'
+import {Tabs} from '../constants'
 
 const datasets = (state = [], action) =>
     action.type === ActionTypes.INITIALIZE_STATE ?
@@ -62,7 +63,25 @@ const previewContent = (state = {}, action) => {
         default:
             return state
     }
+}
 
+const selectedTab = (state = {}, action) => {
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            const selectedTab = {}
+            action.datasets.forEach(dataset => {
+                selectedTab[dataset.id] = Tabs.DESCRIPTION
+            })
+            return selectedTab
+
+        case ActionTypes.SELECT_TAB:
+            return Object.assign({}, state, {
+                [action.dataset_id]: action.tab
+            })
+
+        default:
+            return state
+    }
 }
 
 export default combineReducers({
@@ -70,4 +89,7 @@ export default combineReducers({
     filterText,
     isFetching,
     previewContent,
+    ui: combineReducers({
+        selectedTab
+    })
 })

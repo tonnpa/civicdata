@@ -16,7 +16,7 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import fetch from 'isomorphic-fetch'
 
-import {initializeState, fetchRecords} from '../actions/Actions'
+import {initializeState, selectTab} from '../actions/Actions'
 import App from '../components/App'
 import appReducer from './reducers'
 
