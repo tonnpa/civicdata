@@ -2,7 +2,7 @@
 
 import {combineReducers} from 'redux'
 import ActionTypes from '../actions/ActionTypes'
-import {Tabs} from '../constants'
+import {TabTitles} from '../constants'
 
 const datasets = (state = [], action) =>
     action.type === ActionTypes.INITIALIZE_STATE ?
@@ -70,7 +70,7 @@ const selectedTab = (state = {}, action) => {
         case ActionTypes.INITIALIZE_STATE:
             const selectedTab = {}
             action.datasets.forEach(dataset => {
-                selectedTab[dataset.id] = Tabs.DESCRIPTION
+                selectedTab[dataset.id] = TabTitles.DESCRIPTION
             })
             return selectedTab
 

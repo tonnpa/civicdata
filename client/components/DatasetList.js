@@ -4,9 +4,9 @@ import React from 'react'
 import Dataset from './Dataset'
 import {Grid} from 'react-bootstrap'
 
-const DatasetList = ({datasets, filterText, previewContent, onPreviewLoad}) => {
-    const visibleDatasets = datasets.filter(dataset =>
-        dataset.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1)
+const DatasetList = (props) => {
+    const visibleDatasets = props.datasets.filter(dataset =>
+        dataset.title.toLowerCase().indexOf(props.filterText.toLowerCase()) !== -1)
 
     return (
         <div id="main">
@@ -16,8 +16,10 @@ const DatasetList = ({datasets, filterText, previewContent, onPreviewLoad}) => {
                     <Dataset
                         key={dataset.id}
                         {...dataset}
-                        previewContent={previewContent[dataset.id]}
-                        onPreviewLoad={onPreviewLoad}
+                        previewContent={props.previewContent[dataset.id]}
+                        onPreviewLoad={props.onPreviewLoad}
+                        tab={props.ui.selectedTab[dataset.id]}
+                        onSelectTab={props.onSelectTab}
                     />
                 )}
             </Grid>

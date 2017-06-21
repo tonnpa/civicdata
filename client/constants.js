@@ -14,7 +14,7 @@ export const TagStyles = {
     FORMAT: 'tag-format',
 }
 
-export const Tabs = {
+export const TabTitles = {
     DESCRIPTION: 1,
     PREVIEW: 2,
 }

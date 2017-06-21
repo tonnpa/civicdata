@@ -6,15 +6,15 @@ import {Col, Grid, Row, Tab, Tabs} from 'react-bootstrap'
 import DatasetDetails from './DatasetDetails'
 import Preview from './Preview'
 import Snapshot from './Snapshot'
-import {FileFormats} from '../constants'
+import {FileFormats, TabTitles} from '../constants'
 
 const Dataset = (props) => (
     <div className="dataset-container" id={props.id}>
         <Grid fluid={true}>
             <Row>
-                <Col md={8}>
+                <Col md={(props.tab === TabTitles.PREVIEW) ? 12 : 8}>
                     <h2>{props.title}</h2>
-                    <Tabs id="dataset-details">
+                    <Tabs id="dataset-details" onSelect={(tab) => props.onSelectTab(props.id, tab)}>
                         <Tab title="Description" eventKey={1}>
                             <DatasetDetails {...props}/>
                         </Tab>
@@ -26,7 +26,8 @@ const Dataset = (props) => (
                     </Tabs>
                 </Col>
                 <Col md={4}>
-                    <Snapshot image_file_name={props.image_file_name}/>
+                    <Snapshot image_file_name={props.image_file_name}
+                              tab={props.tab}/>
                 </Col>
             </Row>
         </Grid>
