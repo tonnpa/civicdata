@@ -13,26 +13,26 @@ export const initializeState = (datasets) => ({
     datasets
 })
 
-export const selectTab = (dataset_id, tab) => ({
+export const selectTab = (datasetId, tab) => ({
     type: ActionTypes.SELECT_TAB,
-    dataset_id,
+    datasetId,
     tab,
 })
 
-export const fetchRecords = (dataset_id) => (dispatch, getState) => {
+export const fetchRecords = (datasetId) => (dispatch, getState) => {
     const state = getState()
-    if (!state.isFetching[dataset_id]) {
+    if (!state.isFetching[datasetId]) {
         dispatch({
-            type: ActionTypes.FETCH_RECORDS,
-            dataset_id,
+            type: ActionTypes.FETCH_RECORDS,    
+            datasetId,
         })
 
         // fetch('/api/datainfo/')
-        fetch(`/preview?id=${dataset_id}`)
+        fetch(`/preview?id=${datasetId}`)
             .then(response => response.json())
             .then(data => {
                 dispatch(
-                    receiveRecords(dataset_id, data.results))
+                    receiveRecords(datasetId, data.results))
             })
             .catch(error => {
                 console.log(error.message)
@@ -44,7 +44,7 @@ export const fetchRecords = (dataset_id) => (dispatch, getState) => {
     }
 }
 
-export const receiveRecords = (dataset_id, records) => (dispatch) => {
+export const receiveRecords = (datasetId, records) => (dispatch) => {
     //extract table header from records
     let header;
     if (records && records.length > 0) {
@@ -55,7 +55,7 @@ export const receiveRecords = (dataset_id, records) => (dispatch) => {
     records.forEach(record => rows.push(Object.values(record)))
     dispatch({
         type: ActionTypes.RECEIVE_RECORDS,
-        dataset_id,
+        datasetId,
         header,
         body: rows,
     })

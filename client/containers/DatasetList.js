@@ -7,8 +7,8 @@ import {fetchRecords, selectTab} from '../actions/Actions'
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-    onPreviewLoad: dataset_id => dispatch(fetchRecords(dataset_id)),
-    onSelectTab: (dataset_id, tab) => dispatch(selectTab(dataset_id, tab)),
+    onPreviewLoad: datasetId => dispatch(fetchRecords(datasetId)),
+    onSelectTab: (datasetId, tab) => dispatch(selectTab(datasetId, tab)),
 })
 
 const Container = connect(

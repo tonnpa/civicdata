@@ -25,17 +25,17 @@ const isFetching = (state = {}, action) => {
 
         case ActionTypes.FETCH_RECORDS:
             return Object.assign({}, state, {
-                [action.dataset_id]: true
+                [action.datasetId]: true
             })
 
         case ActionTypes.RECEIVE_RECORDS:
             return Object.assign({}, state, {
-                [action.dataset_id]: false
+                [action.datasetId]: false
             })
 
         case ActionTypes.CANCEL_FETCHING:
             return Object.assign({}, state, {
-                [action.dataset_id]: false
+                [action.datasetId]: false
             })
 
         default:
@@ -54,7 +54,7 @@ const previewContent = (state = {}, action) => {
 
         case ActionTypes.RECEIVE_RECORDS:
             return Object.assign({}, state, {
-                [action.dataset_id]: {
+                [action.datasetId]: {
                     header: action.header,
                     body: action.body,
                 }
@@ -76,7 +76,7 @@ const selectedTab = (state = {}, action) => {
 
         case ActionTypes.SELECT_TAB:
             return Object.assign({}, state, {
-                [action.dataset_id]: action.tab
+                [action.datasetId]: action.tab
             })
 
         default:
