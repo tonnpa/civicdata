@@ -15,7 +15,8 @@ const datasets = (state = [], action) => {
         action.datafiles.forEach(file =>
             datasets[idToIndex[file.dataset_id]].files.push({
                 name: file.name,
-                format: file.format
+                format: file.format,
+                size: file.num_records,
             })
         )
         return datasets

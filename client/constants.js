@@ -12,6 +12,7 @@ export const FileFormats = {
 export const TagStyles = {
     DATE: 'tag-date',
     FORMAT: 'tag-format',
+    SIZE: 'tag-size',
 }
 
 export const TabTitles = {
