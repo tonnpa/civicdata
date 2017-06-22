@@ -1,7 +1,7 @@
 import pandas as pd
 
 from restapi import models
-
+from restapi.constants import FileFormats
 
 def import_dataset_information():
     # delete existing records
@@ -35,6 +35,10 @@ def import_dataset_information():
                 name=record.FileName,
                 format=record.Format,
             )
+            if record.Format == FileFormats.CSV:
+                data_file.num_records = len(pd.read_csv('assets/data/{}'.format(record.FileName)))
+            elif record.Format == FileFormats.EXCEL:
+                data_file.num_records = len(pd.read_excel('assets/data/{}'.format(record.FileName)))
             data_file.save()
         except ValueError as ex:
             print(ex)

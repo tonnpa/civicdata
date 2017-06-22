@@ -26,3 +26,4 @@ class DataFile(models.Model):
     )
     format = models.CharField(max_length=16,
                               choices=FORMAT_CHOICES)
+    num_records = models.IntegerField(null=True)
