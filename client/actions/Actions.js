@@ -23,7 +23,7 @@ export const fetchRecords = (datasetId) => (dispatch, getState) => {
     const state = getState()
     if (!state.isFetching[datasetId]) {
         dispatch({
-            type: ActionTypes.FETCH_RECORDS,    
+            type: ActionTypes.FETCH_RECORDS,
             datasetId,
         })
 

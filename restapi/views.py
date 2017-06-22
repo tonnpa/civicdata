@@ -6,7 +6,7 @@ from .constants import FileFormats
 
 
 class DatasetViewSet(ModelViewSet):
-    queryset = models.Dataset.objects.all().order_by('title')
+    queryset = models.Dataset.objects.all()
     serializer_class = serializers.DatasetSerializer
 
 
