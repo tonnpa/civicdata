@@ -16,29 +16,14 @@ class DataFileViewSet(ModelViewSet):
 
 
 def preview(request):
-    def get_preview_format(format):
-        if ',' in format:
-            formats = format.split(',')
-            formats.remove(FileFormats.SHAPEFILE)
-            return formats[0]
-        return format
+    data_file = models.DataFile.objects\
+        .exclude(format=FileFormats.SHAPEFILE)\
+        .get(dataset_id=request.GET['id'])
 
-    def get_preview_file_name(file_name):
-        if ',' in file_name:
-            #TODO
-            names = [name for name in file_name.split(',') if not name.endswith('zip')]
-            return names[0]
-        return file_name
-
-
-    dataset = models.Dataset.objects.get(pk=request.GET['id'])
-    format = get_preview_format(dataset.format)
-    file_name = get_preview_file_name(dataset.file_name)
-
-    if format == FileFormats.EXCEL:
-        data = pd.read_excel("assets/data/{}".format(file_name))
-    elif format == FileFormats.CSV:
-        data = pd.read_csv("assets/data/{}".format(file_name), nrows=20)
+    if data_file.format == FileFormats.EXCEL:
+        data = pd.read_excel("assets/data/{}".format(data_file.name))
+    elif data_file.format == FileFormats.CSV:
+        data = pd.read_csv("assets/data/{}".format(data_file.name), nrows=20)
     else:
         # TODO: handle shapefile and other formats
         data = pd.DataFrame()
