@@ -4,6 +4,7 @@ from restapi import views
 
 router = DefaultRouter()
 router.register(r'^api/datainfo', views.DatasetViewSet)
+router.register(r'^api/datafiles', views.DataFileViewSet)
 
 urlpatterns = router.urls
 

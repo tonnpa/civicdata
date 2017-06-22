@@ -17,7 +17,7 @@ class Dataset(models.Model):
 
 class DataFile(models.Model):
     dataset_id = models.ForeignKey(Dataset, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True, primary_key=True)
 
     FORMAT_CHOICES = (
         ('csv', 'csv'),
@@ -26,6 +26,3 @@ class DataFile(models.Model):
     )
     format = models.CharField(max_length=16,
                               choices=FORMAT_CHOICES)
-
-    class Meta:
-        unique_together = ('dataset_id', 'name')

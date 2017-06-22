@@ -6,3 +6,9 @@ class DatasetSerializer(ModelSerializer):
     class Meta:
         model = models.Dataset
         fields = '__all__'
+
+
+class DataFileSerializer(ModelSerializer):
+    class Meta:
+        model = models.DataFile
+        fields = '__all__'

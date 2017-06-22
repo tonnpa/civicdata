@@ -10,6 +10,11 @@ class DatasetViewSet(ModelViewSet):
     serializer_class = serializers.DatasetSerializer
 
 
+class DataFileViewSet(ModelViewSet):
+    queryset = models.DataFile.objects.all()
+    serializer_class = serializers.DataFileSerializer
+
+
 def preview(request):
     def get_preview_format(format):
         if ',' in format:
