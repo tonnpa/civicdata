@@ -14,16 +14,8 @@ function parseDate(date_from, date_to) {
     return `${date_from} - ${date_to}`
 }
 
-function parseFormat(format) {
-    //check for multiple formats (indicated by ',')
-    if (format.indexOf(',') === -1) {
-        return [format]
-    }
-    return format.split(',')
-}
-
-const TagList = ({date_from, date_to, format}) => {
-    const formats = parseFormat(format)
+const TagList = ({date_from, date_to, files}) => {
+    const formats = files.map(file => file.format)
     const formatTags = formats.map((file_format, idx) =>
         <li key={idx}><Tag key={`format-${idx}`} tagStyle={TagStyles.FORMAT} text={file_format}/></li>
     )

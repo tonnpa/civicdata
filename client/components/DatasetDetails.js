@@ -14,9 +14,8 @@ const DatasetDetails = (props) => (
         <p>{props.description}</p>
         <TagList date_from={props.date_from}
                  date_to={props.date_to}
-                 format={props.format}/>
-        <DownloadButton file_name={props.file_name}
-                        format={props.format}/>
+                 files={props.files}/>
+        <DownloadButton files={props.files}/>
     </div>
 )
 
