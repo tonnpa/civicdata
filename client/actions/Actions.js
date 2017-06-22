@@ -8,9 +8,10 @@ export const changeFilterText = (filterText) => ({
     filterText
 })
 
-export const initializeState = (datasets) => ({
+export const initializeState = (datasets, datafiles) => ({
     type: ActionTypes.INITIALIZE_STATE,
-    datasets
+    datasets,
+    datafiles
 })
 
 export const selectTab = (datasetId, tab) => ({

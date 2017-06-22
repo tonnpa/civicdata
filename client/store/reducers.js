@@ -4,10 +4,24 @@ import {combineReducers} from 'redux'
 import ActionTypes from '../actions/ActionTypes'
 import {TabTitles} from '../constants'
 
-const datasets = (state = [], action) =>
-    action.type === ActionTypes.INITIALIZE_STATE ?
-        action.datasets :
-        state
+const datasets = (state = [], action) => {
+    if (action.type === ActionTypes.INITIALIZE_STATE) {
+        const idToIndex = {}
+        const datasets = action.datasets
+        datasets.forEach((dataset, index) => {
+            dataset.files = []
+            idToIndex[dataset.id] = index
+        })
+        action.datafiles.forEach(file =>
+            datasets[idToIndex[file.dataset_id]].files.push({
+                file_name: file.name,
+                format: file.format
+            })
+        )
+        return datasets
+    }
+    return state
+}
 
 const filterText = (state = '', action) =>
     action.type === ActionTypes.CHANGE_FILTER_TEXT ?

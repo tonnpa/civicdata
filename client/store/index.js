@@ -27,11 +27,15 @@ const store = createStore(appReducer,
 
 fetch('api/datainfo')
     .then(response => response.json())
-    .then(data => store.dispatch(
-        initializeState(data.results))
+    .then(datasets => {
+        fetch('api/datafiles')
+            .then(response => response.json())
+            .then(datafiles => store.dispatch(
+                initializeState(datasets.results, datafiles.results))
+            )
+        }
     )
 
-window.React = React
 window.store = store
 
 ReactDOM.render(
