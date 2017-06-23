@@ -20,7 +20,9 @@ import {initializeState} from '../actions/Actions'
 import App from '../components/App'
 import appReducer from './reducers'
 
-const loggerMiddleware = createLogger()
+const DEBUG = (process.env.DEBUG === 'true')
+
+const loggerMiddleware = createLogger({predicate: (getState, action) => DEBUG})
 const store = createStore(appReducer,
     applyMiddleware(thunkMiddleware, loggerMiddleware)
 )
@@ -36,7 +38,9 @@ fetch('api/datainfo')
         }
     )
 
-window.store = store
+if (DEBUG) {
+    window.store = store
+}
 
 ReactDOM.render(
     <Provider store={store}>

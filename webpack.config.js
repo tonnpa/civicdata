@@ -1,12 +1,13 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const BundleTracker = require('webpack-bundle-tracker');
+const Path = require('path')
+const BundleTracker = require('webpack-bundle-tracker')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
     entry: './client/store/index.js',
     output: {
-        path: path.resolve('assets'),
+        path: Path.resolve('assets'),
         publicPath: '/static/',
         filename: '[name].js'
     },
@@ -37,6 +38,7 @@ module.exports = {
     },
     plugins: [
         new BundleTracker({filename: './webpack-stats.json'}),
+        new Dotenv({path: './.env'}),
     ],
     resolve: {
         extensions: ['.js', '.jsx'],
