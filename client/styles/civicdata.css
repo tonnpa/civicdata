@@ -8,7 +8,9 @@ body {
 }
 
 .content {
-    background-color: #E3BF81;
+    background-image: url("../../assets/background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .img-header {
