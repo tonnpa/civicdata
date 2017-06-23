@@ -18,4 +18,5 @@ export const TagStyles = {
 export const TabTitles = {
     DESCRIPTION: 1,
     PREVIEW: 2,
+    METADATA: 3,
 }
