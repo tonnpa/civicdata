@@ -22,7 +22,7 @@ export const selectTab = (datasetId, tab) => ({
 
 export const fetchRecords = (datasetId) => (dispatch, getState) => {
     const state = getState()
-    if (!state.isFetching[datasetId]) {
+    if (!state.ui.isFetchingRecords[datasetId]) {
         dispatch({
             type: ActionTypes.FETCH_RECORDS,
             datasetId,

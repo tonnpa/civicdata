@@ -6,7 +6,7 @@ import {Grid} from 'react-bootstrap'
 
 const DatasetList = (props) => {
     const visibleDatasets = props.datasets.filter(dataset =>
-        dataset.title.toLowerCase().indexOf(props.filterText.toLowerCase()) !== -1)
+        dataset.title.toLowerCase().indexOf(props.ui.filterText.toLowerCase()) !== -1)
 
     return (
         <div id="main">

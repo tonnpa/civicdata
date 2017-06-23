@@ -29,7 +29,7 @@ const filterText = (state = '', action) =>
         action.filterText :
         state
 
-const isFetching = (state = {}, action) => {
+const isFetchingRecords = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
             const isFetching = {}
@@ -101,10 +101,10 @@ const selectedTab = (state = {}, action) => {
 
 export default combineReducers({
     datasets,
-    filterText,
-    isFetching,
     previewContent,
     ui: combineReducers({
+        filterText,
+        isFetchingRecords,
         selectedTab
     })
 })
