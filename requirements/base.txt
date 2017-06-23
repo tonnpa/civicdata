@@ -6,4 +6,4 @@ whitenoise
 django-webpack-loader
 python-decouple
 djangorestframework
-
+django-filter

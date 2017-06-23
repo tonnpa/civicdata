@@ -18,6 +18,7 @@ class DataFileViewSet(ModelViewSet):
 class MetaInfoViewSet(ModelViewSet):
     queryset = models.MetaInfo.objects.all()
     serializer_class = serializers.MetaInfoSerializer
+    filter_fields = ('dataset_id',)
 
 
 def preview(request):
