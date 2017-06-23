@@ -12,3 +12,9 @@ class DataFileSerializer(ModelSerializer):
     class Meta:
         model = models.DataFile
         fields = '__all__'
+
+
+class MetaInfoSerializer(ModelSerializer):
+    class Meta:
+        model = models.MetaInfo
+        fields = '__all__'

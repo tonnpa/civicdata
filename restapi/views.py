@@ -15,6 +15,11 @@ class DataFileViewSet(ModelViewSet):
     serializer_class = serializers.DataFileSerializer
 
 
+class MetaInfoViewSet(ModelViewSet):
+    queryset = models.MetaInfo.objects.all()
+    serializer_class = serializers.MetaInfoSerializer
+
+
 def preview(request):
     data_file = models.DataFile.objects\
         .exclude(format=FileFormats.SHAPEFILE)\
