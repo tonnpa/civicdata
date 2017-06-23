@@ -1,9 +1,9 @@
 /**
  * Created by tonnpa on 6/23/17.
  */
+'use strict'
 
 import React from 'react'
-import {Table} from 'react-bootstrap'
 
 const MetaInfo = ({content = []}) => (
     <div>
