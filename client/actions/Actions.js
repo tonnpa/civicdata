@@ -61,7 +61,8 @@ export const receiveRecords = (datasetId, records) => (dispatch) => {
 
 export const fetchMeta = (datasetId) => (dispatch, getState) => {
     const state = getState()
-    if (!state.ui.isFetchingMetadata[datasetId]) {
+    if (state.metainfo[datasetId] === undefined &&
+        !state.ui.isFetchingMetadata[datasetId]) {
         dispatch({
             type: ActionTypes.FETCH_META,
             datasetId,
