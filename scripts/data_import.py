@@ -3,10 +3,12 @@ import pandas as pd
 from restapi import models
 from restapi.constants import FileFormats
 
+
 def import_dataset_information():
     # delete existing records
     models.Dataset.objects.all().delete()
     models.DataFile.objects.all().delete()
+    models.MetaInfo.objects.all().delete()
 
     # import from spreadsheet
     dataset_df = pd.read_excel('assets/data/DatasetInformation.xlsx')
@@ -43,3 +45,17 @@ def import_dataset_information():
         except ValueError as ex:
             print(ex)
     print('Importing Dataset Files has finished.')
+
+    metainfo_df = pd.read_excel('assets/data/DatasetMetaInformation.xlsx')
+    for record in metainfo_df.itertuples():
+        try:
+            meta_info = models.MetaInfo(
+                dataset_id=models.Dataset(record.DatasetId),
+                feature=record.Feature,
+                description=record.Description,
+                comment=record.Comment,
+            )
+            meta_info.save()
+        except ValueError as ex:
+            print(ex)
+    print('Importing Meta Information has finished.')
