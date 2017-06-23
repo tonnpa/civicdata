@@ -16,7 +16,7 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import fetch from 'isomorphic-fetch'
 
-import {initializeState, selectTab} from '../actions/Actions'
+import {initializeState} from '../actions/Actions'
 import App from '../components/App'
 import appReducer from './reducers'
 
@@ -31,7 +31,7 @@ fetch('api/datainfo')
         fetch('api/datafiles')
             .then(response => response.json())
             .then(datafiles => store.dispatch(
-                initializeState(datasets.results, datafiles.results))
+                initializeState(datasets, datafiles))
             )
         }
     )
