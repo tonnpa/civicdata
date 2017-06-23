@@ -10,7 +10,7 @@ import TagList from './TagList'
 
 const DatasetDetails = (props) => (
     <div className="dataset-description">
-        <span><b>Collector:</b> {props.collector}</span>
+        <p><b>Collector:</b> {props.collector}</p>
         <p>{props.description}</p>
         <TagList date_from={props.date_from}
                  date_to={props.date_to}
