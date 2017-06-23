@@ -11,7 +11,7 @@ export const changeFilterText = (filterText) => ({
 export const initializeState = (datasets, datafiles) => ({
     type: ActionTypes.INITIALIZE_STATE,
     datasets,
-    datafiles
+    datafiles,
 })
 
 export const selectTab = (datasetId, tab) => ({
@@ -28,16 +28,13 @@ export const fetchRecords = (datasetId) => (dispatch, getState) => {
             datasetId,
         })
 
-        // fetch('/api/datainfo/')
         fetch(`/preview?id=${datasetId}`)
             .then(response => response.json())
-            .then(data => {
-                dispatch(
-                    receiveRecords(datasetId, data.results))
-            })
+            .then(data => dispatch(
+                receiveRecords(datasetId, data.results)
+            ))
             .catch(error => {
                 console.log(error.message)
-
                 dispatch({
                     type: ActionTypes.CANCEL_FETCHING
                 })
@@ -59,5 +56,35 @@ export const receiveRecords = (datasetId, records) => (dispatch) => {
         datasetId,
         header,
         body: rows,
+    })
+}
+
+export const fetchMeta = (datasetId) => (dispatch, getState) => {
+    const state = getState()
+    if (!state.ui.isFetchingMetadata[datasetId]) {
+        dispatch({
+            type: ActionTypes.FETCH_META,
+            datasetId,
+        })
+
+        fetch(`/api/metainfo?dataset_id=${datasetId}`)
+            .then(response => response.json())
+            .then(metainfo => dispatch(
+                receiveMeta(datasetId, metainfo)
+            ))
+            .catch(error => {
+                console.log(error.message)
+                dispatch({
+                    type: ActionTypes.CANCEL_FETCHING_META,
+                })
+            })
+    }
+}
+
+export const receiveMeta = (datasetId, metainfo) => (dispatch) => {
+    dispatch({
+        type: ActionTypes.RECEIVE_META,
+        datasetId,
+        metainfo,
     })
 }

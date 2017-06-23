@@ -2,11 +2,12 @@
 
 import {connect} from 'react-redux'
 import DatasetList from '../components/DatasetList'
-import {fetchRecords, selectTab} from '../actions/Actions'
+import {fetchMeta, fetchRecords, selectTab} from '../actions/Actions'
 
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
+    onMetaLoad: datasetId => dispatch(fetchMeta(datasetId)),
     onPreviewLoad: datasetId => dispatch(fetchRecords(datasetId)),
     onSelectTab: (datasetId, tab) => dispatch(selectTab(datasetId, tab)),
 })

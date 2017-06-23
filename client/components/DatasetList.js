@@ -20,6 +20,8 @@ const DatasetList = (props) => {
                         onPreviewLoad={props.onPreviewLoad}
                         tab={props.ui.selectedTab[dataset.id]}
                         onSelectTab={props.onSelectTab}
+                        metainfo={props.metainfo[dataset.id]}
+                        onMetaLoad={props.onMetaLoad}
                     />
                 )}
             </Grid>

@@ -24,6 +24,47 @@ const datasets = (state = [], action) => {
     return state
 }
 
+const metainfo = (state = {}, action) => {
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            const metainfo = {}
+            action.datasets.forEach(dataset => {
+                metainfo[dataset.id] = undefined
+            })
+            return metainfo
+
+        case ActionTypes.RECEIVE_META:
+            return Object.assign({}, state, {
+                [action.datasetId]: action.metainfo,
+            })
+
+        default:
+            return state
+    }
+}
+
+const previewContent = (state = {}, action) => {
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            const previewContent = {}
+            action.datasets.forEach(dataset => {
+                previewContent[dataset.id] = undefined
+            })
+            return previewContent
+
+        case ActionTypes.RECEIVE_RECORDS:
+            return Object.assign({}, state, {
+                [action.datasetId]: {
+                    header: action.header,
+                    body: action.body,
+                }
+            })
+
+        default:
+            return state
+    }
+}
+
 const filterText = (state = '', action) =>
     action.type === ActionTypes.CHANGE_FILTER_TEXT ?
         action.filterText :
@@ -58,21 +99,28 @@ const isFetchingRecords = (state = {}, action) => {
     }
 }
 
-const previewContent = (state = {}, action) => {
+const isFetchingMetadata = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
-            const previewContent = {}
+            const isFetching = {}
             action.datasets.forEach(dataset => {
-                previewContent[dataset.id] = undefined
+                isFetching[dataset.id] = false
             })
-            return previewContent
+            return isFetching
 
-        case ActionTypes.RECEIVE_RECORDS:
+        case ActionTypes.FETCH_META:
             return Object.assign({}, state, {
-                [action.datasetId]: {
-                    header: action.header,
-                    body: action.body,
-                }
+                [action.datasetId]: true
+            })
+
+        case ActionTypes.RECEIVE_META:
+            return Object.assign({}, state, {
+                [action.datasetId]: false
+            })
+
+        case ActionTypes.CANCEL_META:
+            return Object.assign({}, state, {
+                [action.datasetId]: false
             })
 
         default:
@@ -101,10 +149,12 @@ const selectedTab = (state = {}, action) => {
 
 export default combineReducers({
     datasets,
+    metainfo,
     previewContent,
     ui: combineReducers({
         filterText,
         isFetchingRecords,
+        isFetchingMetadata,
         selectedTab
     })
 })

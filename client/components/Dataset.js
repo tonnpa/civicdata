@@ -4,7 +4,7 @@ import React from 'react'
 import {Col, Grid, Row, Tab, Tabs} from 'react-bootstrap'
 
 import DatasetDetails from './DatasetDetails'
-import Metadata from './Metadata'
+import MetaInfo from './MetaInfo'
 import Preview from './Preview'
 import Snapshot from './Snapshot'
 import {FileFormats, TabTitles} from '../constants'
@@ -31,8 +31,10 @@ const Dataset = (props) => {
                             <Tab title="Description" eventKey={TabTitles.DESCRIPTION}>
                                 <DatasetDetails {...props}/>
                             </Tab>
-                            <Tab title="Metadata" eventKey={TabTitles.METADATA}>
-                                <Metadata {...props}/>
+                            <Tab title="Meta Information" eventKey={TabTitles.METADATA}
+                                 onEnter={() => props.onMetaLoad(props.id)}
+                                 disabled={!hasPreviewFormat(props.files)}>
+                                <MetaInfo content={props.metainfo}/>
                             </Tab>
                             <Tab title="Preview" eventKey={TabTitles.PREVIEW}
                                  onEnter={() => props.onPreviewLoad(props.id)}
