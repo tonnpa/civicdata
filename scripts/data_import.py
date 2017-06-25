@@ -12,6 +12,7 @@ def import_dataset_information():
 
     # import from spreadsheet
     dataset_df = pd.read_excel('assets/data/DatasetInformation.xlsx')
+    dataset_df = dataset_df.where(pd.notnull(dataset_df), None)
     for record in dataset_df.itertuples():
         try:
             dataset = models.Dataset(
@@ -47,6 +48,7 @@ def import_dataset_information():
     print('Importing Dataset Files has finished.')
 
     metainfo_df = pd.read_excel('assets/data/DatasetMetaInformation.xlsx')
+    metainfo_df= metainfo_df.where(pd.notnull(metainfo_df), None)
     for record in metainfo_df.itertuples():
         try:
             meta_info = models.MetaInfo(
