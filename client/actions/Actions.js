@@ -31,7 +31,7 @@ export const fetchRecords = (datasetId) => (dispatch, getState) => {
         fetch(`/preview?id=${datasetId}`)
             .then(response => response.json())
             .then(data => dispatch(
-                receiveRecords(datasetId, data.results)
+                receiveRecords(datasetId, data)
             ))
             .catch(error => {
                 console.log(error.message)
@@ -42,20 +42,12 @@ export const fetchRecords = (datasetId) => (dispatch, getState) => {
     }
 }
 
-export const receiveRecords = (datasetId, records) => (dispatch) => {
-    //extract table header from records
-    let header;
-    if (records && records.length > 0) {
-        header = Object.keys(records[0])
-    }
-    //extract table body from records
-    const rows = [];
-    records.forEach(record => rows.push(Object.values(record)))
+export const receiveRecords = (datasetId, data) => (dispatch) => {
     dispatch({
         type: ActionTypes.RECEIVE_RECORDS,
         datasetId,
-        header,
-        body: rows,
+        header: data.columns,
+        body: data.values,
     })
 }
 

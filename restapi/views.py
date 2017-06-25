@@ -35,4 +35,8 @@ def preview(request):
         data = pd.DataFrame()
 
     data.fillna('', inplace=True)
-    return JsonResponse({'results': data.head(10).to_dict(orient='records')})
+    return JsonResponse({
+        'columns': data.columns.tolist(),
+        'values': data.values.tolist()
+    })
+    # return JsonResponse({'results': data.head(10).to_dict(orient='records')})
