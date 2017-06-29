@@ -45,7 +45,9 @@ const Dataset = (props) => {
                     </Col>
                     <Col md={4}>
                         <Snapshot image_file_name={props.image_file_name}
-                                  tab={props.tab}/>
+                                  tab={props.tab}
+                                  isOpen={props.isImageOpen}
+                                  onToggle={() => props.onImageToggle(props.id)}/>
                     </Col>
                 </Row>
             </Grid>

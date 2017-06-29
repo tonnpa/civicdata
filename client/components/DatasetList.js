@@ -22,6 +22,8 @@ const DatasetList = (props) => {
                         onSelectTab={props.onSelectTab}
                         metainfo={props.metainfo[dataset.id]}
                         onMetaLoad={props.onMetaLoad}
+                        isImageOpen={props.ui.isImageOpen[dataset.id]}
+                        onImageToggle={props.onImageToggle}
                     />
                 )}
             </Grid>

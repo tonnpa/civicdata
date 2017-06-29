@@ -4,6 +4,18 @@ import {combineReducers} from 'redux'
 import ActionTypes from '../actions/ActionTypes'
 import {TabTitles} from '../constants'
 
+function getIds(datasets){
+    return datasets.map(dataset => dataset.id)
+}
+
+function initialStateDictionary(keys, initialValue){
+    const dictionary = {}
+    keys.forEach(key => {
+        dictionary[key] = initialValue
+    })
+    return dictionary
+}
+
 const datasets = (state = [], action) => {
     if (action.type === ActionTypes.INITIALIZE_STATE) {
         const idToIndex = {}
@@ -27,11 +39,7 @@ const datasets = (state = [], action) => {
 const metainfo = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
-            const metainfo = {}
-            action.datasets.forEach(dataset => {
-                metainfo[dataset.id] = undefined
-            })
-            return metainfo
+            return initialStateDictionary(getIds(action.datasets), undefined)
 
         case ActionTypes.RECEIVE_META:
             return Object.assign({}, state, {
@@ -46,11 +54,7 @@ const metainfo = (state = {}, action) => {
 const previewContent = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
-            const previewContent = {}
-            action.datasets.forEach(dataset => {
-                previewContent[dataset.id] = undefined
-            })
-            return previewContent
+            return initialStateDictionary(getIds(action.datasets), undefined)
 
         case ActionTypes.RECEIVE_RECORDS:
             return Object.assign({}, state, {
@@ -73,11 +77,7 @@ const filterText = (state = '', action) =>
 const isFetchingRecords = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
-            const isFetching = {}
-            action.datasets.forEach(dataset => {
-                isFetching[dataset.id] = false
-            })
-            return isFetching
+            return initialStateDictionary(getIds(action.datasets), false)
 
         case ActionTypes.FETCH_RECORDS:
             return Object.assign({}, state, {
@@ -102,11 +102,8 @@ const isFetchingRecords = (state = {}, action) => {
 const isFetchingMetadata = (state = {}, action) => {
     switch (action.type) {
         case ActionTypes.INITIALIZE_STATE:
-            const isFetching = {}
-            action.datasets.forEach(dataset => {
-                isFetching[dataset.id] = false
-            })
-            return isFetching
+            return initialStateDictionary(getIds(action.datasets), false)
+
 
         case ActionTypes.FETCH_META:
             return Object.assign({}, state, {
@@ -121,6 +118,21 @@ const isFetchingMetadata = (state = {}, action) => {
         case ActionTypes.CANCEL_META:
             return Object.assign({}, state, {
                 [action.datasetId]: false
+            })
+
+        default:
+            return state
+    }
+}
+
+const isImageOpen = (state = {}, action) => {
+    switch (action.type) {
+        case ActionTypes.INITIALIZE_STATE:
+            return initialStateDictionary(getIds(action.datasets), false)
+
+        case ActionTypes.TOGGLE_IMAGE:
+            return Object.assign({}, state, {
+                [action.datasetId]: !state[action.datasetId]
             })
 
         default:
@@ -155,6 +167,7 @@ export default combineReducers({
         filterText,
         isFetchingRecords,
         isFetchingMetadata,
+        isImageOpen,
         selectedTab
     })
 })

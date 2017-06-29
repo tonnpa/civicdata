@@ -20,6 +20,11 @@ export const selectTab = (datasetId, tab) => ({
     tab,
 })
 
+export const toggleImage = (datasetId) => ({
+    type: ActionTypes.TOGGLE_IMAGE,
+    datasetId,
+})
+
 export const fetchRecords = (datasetId) => (dispatch, getState) => {
     const state = getState()
     if (!state.ui.isFetchingRecords[datasetId]) {
