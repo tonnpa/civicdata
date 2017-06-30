@@ -11,7 +11,9 @@ import TagList from './TagList'
 const DatasetDetails = (props) => (
     <div className="dataset-description">
         <p><b>Collector:</b> {props.collector}</p>
-        <p>{props.description}</p>
+        {props.description.split('\n').map(paragraph => (
+            <p>{paragraph}</p>
+        ))}
         <TagList date_from={props.date_from}
                  date_to={props.date_to}
                  files={props.files}/>
