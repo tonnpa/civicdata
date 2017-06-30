@@ -20,6 +20,10 @@ body {
     height: 200px;
 }
 
+.modal-content {
+    text-align: center;
+}
+
 /*.loader {*/
     /*border: 1em solid #f3f3f3;*/
     /*border-radius: 50%;*/
