@@ -1,5 +1,6 @@
 @import url('Dataset.css');
 @import url('SideMenu.css');
+@import url('ImageModal.css');
 
 body {
     background-color: #323232;
@@ -18,10 +19,6 @@ body {
     background-position: center;
     background-size: cover;
     height: 200px;
-}
-
-.modal-content {
-    text-align: center;
 }
 
 /*.loader {*/
