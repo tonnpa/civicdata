@@ -27,7 +27,7 @@ def preview(request):
         .get(dataset_id=request.GET['id'])
 
     if data_file.format == FileFormats.EXCEL:
-        data = pd.read_excel("assets/data/{}".format(data_file.name, skip_footer=data_file.num_records - 20))
+        data = pd.read_excel("assets/data/{}".format(data_file.name), skip_footer=data_file.num_records - 20)
     elif data_file.format == FileFormats.CSV:
         data = pd.read_csv("assets/data/{}".format(data_file.name), nrows=20)
     else:
