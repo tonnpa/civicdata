@@ -12,12 +12,17 @@
     overflow: auto;
 }
 
-.dataset-description {
-    padding: 1em;
+.dataset-container img {
+    margin-top: 2em;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.dataset-container img:hover {
+    opacity: 0.7;
 }
 
-.dataset-image {
-    margin-top: 1em;
+.dataset-description {
+    padding: 1em;
 }
 
 .tag {

@@ -7,10 +7,10 @@ import {TabTitles} from '../constants'
 const Snapshot = ({image_file_name, tab, isOpen, onToggle}) => (
     <div>
         <Image src={`/static/media/${image_file_name}`}
-               className="img-responsive center-block dataset-image"
+               className="center-block"
                onClick={onToggle}
                style={{display: (tab === TabTitles.PREVIEW) ? "none" : "inline"}}
-               thumbnail/>
+               thumbnail responsive/>
 
         <Modal show={isOpen} onHide={onToggle}>
             <Modal.Header closeButton>
@@ -18,9 +18,7 @@ const Snapshot = ({image_file_name, tab, isOpen, onToggle}) => (
             </Modal.Header>
             <Modal.Body>
                 <Image src={`/static/media/${image_file_name}`}
-                       className="img-responsive center-block dataset-image"
-                       style={{display: (tab === TabTitles.PREVIEW) ? "none" : "inline"}}
-                       thumbnail/>
+                       className="center-block" thumbnail responsive/>
                 <div>
                     This is some image caption text.
                 </div>
