@@ -4,6 +4,8 @@
 #9BBBA4 - Turquoise
 #FF6D35 - Dark Orange
 #51434C - Dark Purple
+#4DCEC6 - Light Blue
+#283D51 - Dark Blue
 */
 
 @import url('Dataset.css');
@@ -20,6 +22,7 @@ body {
     background-image: url("../../assets/background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .img-header {
