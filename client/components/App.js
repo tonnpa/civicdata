@@ -6,7 +6,7 @@ import SideMenu from '../containers/SideMenu'
 
 const App = () => (
     <div>
-        <SideMenu />
+        {/*<SideMenu />*/}
         <DatasetList />
     </div>
 )
