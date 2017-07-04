@@ -9,7 +9,7 @@ import SearchBar from './SearchBar'
 const SideMenu = ({datasets = [], filterText, onSearchInputChange}) => (
     <div className="nav-side-menu">
         <div className="brand">CIVIC DATA</div>
-        <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <span className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></span>
         <div className="menu-list">
             <ul id="menu-content" className="menu-content collapse out">
                 <li>
@@ -17,14 +17,14 @@ const SideMenu = ({datasets = [], filterText, onSearchInputChange}) => (
                                onSearchInputChange={onSearchInputChange}/>
                 </li>
                 <li data-toggle="collapse" data-target="#datasets" className="collapsed">
-                    <a href="#"><i className="fa fa-database fa-lg"></i> Datasets <span className="arrow"></span></a>
+                    <a href="#"><span className="fa fa-database fa-lg"></span> Datasets <span className="arrow"></span></a>
                 </li>
                     <ul className="sub-menu collapse" id="datasets">
                         {
                             datasets.map(dataset =>
                                 <li key={dataset.id}>
                                     <a href={`#${dataset.id}`}>
-                                        <i className="fa fa-chevron-right"></i>
+                                        <span className="fa fa-chevron-right"></span>
                                         {dataset.title}
                                     </a>
                                 </li>
