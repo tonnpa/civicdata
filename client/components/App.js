@@ -2,11 +2,11 @@
 
 import React from 'react'
 import DatasetList from '../containers/DatasetList'
-import SideMenu from '../containers/SideMenu'
+import Navigation from '../containers/Navigation'
 
 const App = () => (
     <div>
-        {/*<SideMenu />*/}
+        <Navigation/>
         <DatasetList />
     </div>
 )

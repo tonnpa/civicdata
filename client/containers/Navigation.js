@@ -1,10 +1,10 @@
 /**
- * Created by tonnpa on 6/2/17.
+ * Created by tonnpa on 7/6/17.
  */
 'use strict'
 
 import {connect} from 'react-redux'
-import SideMenu from '../components/SideMenu'
+import Navigation from '../components/Navigation'
 import {changeFilterText} from '../actions/Actions'
 
 const mapStateToProps = state => ({
@@ -23,6 +23,6 @@ const mapDispatchToProps = dispatch => ({
 
 const Container = connect(
     mapStateToProps,
-    mapDispatchToProps
-)(SideMenu)
+    mapDispatchToProps,
+)(Navigation)
 export default Container
