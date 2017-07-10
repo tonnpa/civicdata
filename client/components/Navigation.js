@@ -8,7 +8,7 @@ import {Nav, Navbar, NavDropdown, NavItem, MenuItem} from 'react-bootstrap'
 import SearchBar from './SearchBar'
 
 const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
-    <Navbar collapseOnSelect>
+    <Navbar fixedTop fluid collapseOnSelect>
         <Navbar.Header>
             <Navbar.Brand>
                 <a href="#">CIVIC DATA</a>

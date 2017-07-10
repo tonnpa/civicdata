@@ -6,8 +6,9 @@ import Navigation from '../containers/Navigation'
 
 const App = () => (
     <div>
-        <Navigation/>
+        <Navigation />
         <DatasetList />
+
     </div>
 )
 

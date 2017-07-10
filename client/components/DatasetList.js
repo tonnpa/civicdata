@@ -9,7 +9,7 @@ const DatasetList = (props) => {
         dataset.title.toLowerCase().indexOf(props.ui.filterText.toLowerCase()) !== -1)
 
     return (
-        <div id="main">
+        <div id="dataset-list">
             <div className="img-header text-hide">Civic Data</div>
             <Grid fluid={true} className="content">
                 {visibleDatasets.map(dataset =>
