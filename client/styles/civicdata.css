@@ -8,14 +8,22 @@
 #283D51 - Dark Blue
 */
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
 @import url('Dataset.css');
 @import url('Footer.css');
 @import url('ImageModal.css');
 
 body {
     background-color: #323232;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
     margin: 0;
     padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
 }
 
 .content {
