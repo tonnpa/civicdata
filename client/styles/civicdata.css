@@ -1,6 +1,6 @@
 /*Color Palette
 #323232 - Dark Grey
-#EDAF13 - Light Orange
+#EEB211 - Light Orange
 #9BBBA4 - Turquoise
 #FF6D35 - Dark Orange
 #51434C - Dark Purple
@@ -9,6 +9,7 @@
 */
 
 @import url('Dataset.css');
+@import url('Footer.css');
 @import url('ImageModal.css');
 
 body {
