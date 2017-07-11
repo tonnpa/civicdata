@@ -6,7 +6,7 @@ footer {
 }
 
 footer h4 {
-    padding: 5px 0 5px 0;
+    padding: 5px 0;
     border-bottom: 1px dotted #EEB211;
     border-top: 1px dotted #EEB211;
 }
@@ -17,12 +17,13 @@ footer ul {
 }
 
 footer li {
-    margin: 1em 0 1em 0;
+    margin: 1em 0;
     padding: 0;
+    font-weight: 100;
 }
 
 footer a, footer a:active, footer a:visited, footer a:focus {
-    padding: 0.5em 0 0.5em 0;
+    padding: 0.5em 0;
     text-decoration: none;
     color: white;
 }
