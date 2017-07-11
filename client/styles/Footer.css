@@ -1,0 +1,47 @@
+footer {
+    padding-top: 2em;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    background-color: #545454;
+    color: white;
+}
+
+footer h4 {
+    padding: 5px 0 5px 0;
+    border-bottom: 1px dotted #EEB211;
+    border-top: 1px dotted #EEB211;
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 1em;
+}
+
+footer li {
+    margin: 1em 0 1em 0;
+    padding: 0;
+}
+
+footer a, footer a:active, footer a:visited, footer a:focus {
+    padding: 0.5em 0 0.5em 0;
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+#footer-closing {
+    background-color: #EEB211;
+    color: black;
+    text-align: center;
+}
+
+#gt-map {
+    border: 2px solid #EEB211;
+}
+
+#gt-logo {
+    width: 140px;
+}
