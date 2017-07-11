@@ -40,3 +40,13 @@
 .tag-size {
     background-color: #51434C;
 }
+
+@media (max-width: 768px){
+    .dataset-container {
+        margin: 2em 0;
+    }
+
+    .dataset-description {
+        padding: 0;
+    }
+}
