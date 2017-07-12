@@ -10,7 +10,7 @@ const Footer = () => (
     <footer>
         <Grid fluid>
             <Row>
-                <Col md={2}>
+                <Col md={2} mdOffset={1}>
                     <h4>Georgia Tech Resources</h4>
                     <ul>
                         <li><a href="http://www.gatech.edu/offices-and-departments">Offices &amp; Departments</a></li>
@@ -33,7 +33,7 @@ const Footer = () => (
                         <li><a href="http://www.ipst.gatech.edu/amp">Robert C. Williams Paper Museum</a></li>
                     </ul>
                 </Col>
-                <Col md={4} mdOffset={3}>
+                <Col md={4} mdOffset={2} sm={6} smOffset={4} xs={6} xsOffset={3}>
                     <a href="http://maps.gatech.edu/">
                         <Image id="gt-map" src={`/static/gt-map.jpg`}
                                alt="Map of Georgia Tech"
