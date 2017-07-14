@@ -9,7 +9,7 @@ const MetaInfo = ({content = []}) => (
     <div>
         <dl className="dl-horizontal">
             {content.map(record => (
-                <div key={record.feature}>
+                <div key={record.feature} className="feature-info">
                     <dt>{record.feature}</dt>
                     <dd>{record.description}</dd>
                 </div>

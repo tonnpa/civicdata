@@ -1,0 +1,10 @@
+.img-header {
+    background-image: url("../../assets/civicdata.png");
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}

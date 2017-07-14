@@ -11,7 +11,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
 @import url('Dataset.css');
 @import url('Footer.css');
+@import url('Header.css');
 @import url('ImageModal.css');
+@import url('MetaInfo.css');
 
 body {
     background-color: #323232;
@@ -35,17 +37,6 @@ h1, h2, h3, h4 {
 
 #dataset-list {
     padding-top: 50px;
-}
-
-.img-header {
-    background-image: url("../../assets/civicdata.png");
-    background-position: center;
-    background-size: cover;
-    height: 200px;
-}
-
-.navbar {
-    margin-bottom: 0;
 }
 
 /*.loader {*/

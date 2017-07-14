@@ -1,0 +1,7 @@
+dl .feature-info {
+    padding-top: 1em;
+}
+
+dl dd {
+    color: darkslategray;
+}
