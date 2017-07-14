@@ -5,3 +5,7 @@ dl .feature-info {
 dl dd {
     color: darkslategray;
 }
+
+.feature-comment {
+    cursor: help;
+}
