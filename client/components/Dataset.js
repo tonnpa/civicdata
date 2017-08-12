@@ -22,7 +22,8 @@ const Dataset = (props) => {
     }
 
     return (
-        <div className="dataset-container" id={props.id}>
+        <div className="dataset-container">
+            <a id={props.id} className="anchor"></a>
             <Grid fluid>
                 <Row>
                     <Col md={(props.tab === TabTitles.PREVIEW) ? 12 : 8}>
