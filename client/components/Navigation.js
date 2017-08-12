@@ -12,7 +12,7 @@ const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
         <Navbar fixedTop fluid collapseOnSelect>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#">CIVIC DATA</a>
+                    <a href="#"><h1>CIVIC DATA</h1></a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>

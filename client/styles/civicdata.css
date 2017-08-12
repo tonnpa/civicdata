@@ -11,7 +11,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
 @import url('Dataset.css');
 @import url('Footer.css');
-@import url('Header.css');
+@import url('Navigation.css');
 @import url('ImageModal.css');
 @import url('MetaInfo.css');
 
@@ -33,10 +33,6 @@ h1, h2, h3, h4 {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-#dataset-list {
-    padding-top: 50px;
 }
 
 /*.loader {*/
