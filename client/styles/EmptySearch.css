@@ -1,20 +1,20 @@
-.empty-search {
-    background-color: white;
+#empty-search {
+    background-color: lightgoldenrodyellow;
     color: #283D51;
     min-height: 12em;
     position: relative;
 }
 
-.empty-search h2 {
+#empty-search h2 {
     margin: 0;
     text-align: center
 }
 
-.empty-search img {
+#empty-search img {
     max-height: 4em;
 }
 
-.empty-search .attribution {
+#empty-search .attribution {
     position: absolute;
     bottom: 0;
     right: 0;
