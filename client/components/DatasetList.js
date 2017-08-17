@@ -19,6 +19,7 @@ const DatasetList = (props) => {
                     <Dataset
                         key={dataset.id}
                         {...dataset}
+                        isFetchingRecords={props.ui.isFetchingRecords[dataset.id]}
                         previewContent={props.previewContent[dataset.id]}
                         onPreviewLoad={props.onPreviewLoad}
                         tab={props.ui.selectedTab[dataset.id]}

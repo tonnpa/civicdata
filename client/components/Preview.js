@@ -5,6 +5,7 @@
 
 import React from 'react'
 import {Table} from 'react-bootstrap'
+import Loader from './Loader'
 
 const TableHeader = ({previewContent}) => {
     const header = []
@@ -28,11 +29,16 @@ const TableBody = ({previewContent}) => {
     return <tbody>{body}</tbody>
 }
 
-const Preview = ({previewContent}) => (
-    <Table striped bordered condensed hover responsive>
-        <TableHeader previewContent={previewContent}/>
-        <TableBody previewContent={previewContent}/>
-    </Table>
-)
+const Preview = ({isFetchingRecords, previewContent}) => {
+    if (isFetchingRecords) {
+        return <Loader />
+    }
+    return (
+        <Table striped bordered condensed hover responsive>
+            <TableHeader previewContent={previewContent}/>
+            <TableBody previewContent={previewContent}/>
+        </Table>
+    )
+}
 
 export default Preview

@@ -12,9 +12,10 @@
 @import url('Dataset.css');
 @import url('EmptySearch.css');
 @import url('Footer.css');
-@import url('Navigation.css');
 @import url('ImageModal.css');
+@import url('Loader.css');
 @import url('MetaInfo.css');
+@import url('Navigation.css');
 
 body {
     background-color: #323232;
@@ -35,18 +36,3 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-/*.loader {*/
-    /*border: 1em solid #f3f3f3;*/
-    /*border-radius: 50%;*/
-    /*border-top: 1em solid #edb21f;*/
-    /*width: 8em;*/
-    /*height: 8em;*/
-    /*animation: spin 1s linear infinite;*/
-    /*margin: auto;*/
-/*}*/
-
-/*@keyframes spin {*/
-    /*0% { transform: rotate(0deg); }*/
-    /*100% { transform: rotate(360deg); }*/
-/*}*/

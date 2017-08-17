@@ -14,7 +14,7 @@
     max-height: 4em;
 }
 
-#empty-search .attribution {
+.attribution {
     position: absolute;
     bottom: 0;
     right: 0;

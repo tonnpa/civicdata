@@ -40,7 +40,8 @@ const Dataset = (props) => {
                             <Tab title="Preview" eventKey={TabTitles.PREVIEW}
                                  onEnter={() => props.onPreviewLoad(props.id)}
                                  disabled={!hasPreviewFormat(props.files)}>
-                                <Preview previewContent={props.previewContent}/>
+                                <Preview isFetchingRecords={props.isFetchingRecords}
+                                         previewContent={props.previewContent}/>
                             </Tab>
                         </Tabs>
                     </Col>
