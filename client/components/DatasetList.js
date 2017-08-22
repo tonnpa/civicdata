@@ -1,9 +1,9 @@
 'use strict'
 
 import React from 'react'
+import {Grid} from 'react-bootstrap'
 import Dataset from './Dataset'
 import EmptySearch from './EmptySearch'
-import {Grid} from 'react-bootstrap'
 
 const DatasetList = (props) => {
     const visibleDatasets = props.datasets.filter(dataset =>
