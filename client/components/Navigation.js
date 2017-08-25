@@ -5,6 +5,7 @@
 
 import React from 'react'
 import {Nav, Navbar, NavDropdown, NavItem, MenuItem} from 'react-bootstrap'
+import {scroller} from 'react-scroll'
 import SearchBar from './SearchBar'
 
 const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
@@ -25,7 +26,7 @@ const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
                     <NavDropdown eventKey={1} title="Datasets" id="datasets-dropdown">
                         {datasets.map(dataset =>
                             <MenuItem eventKey={dataset.id} key={dataset.id}
-                                      href={`#${dataset.id}`}>
+                                      onSelect={() => scroller.scrollTo(dataset.id, {smooth: "true"})}>
                                 {dataset.title}
                             </MenuItem>
                         )}

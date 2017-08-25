@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {Col, Grid, Row, Tab, Tabs} from 'react-bootstrap'
+import {Element} from 'react-scroll'
 
 import DatasetDetails from './DatasetDetails'
 import MetaInfo from './MetaInfo'
@@ -23,7 +24,7 @@ const Dataset = (props) => {
 
     return (
         <div className="dataset-container">
-            <a id={props.id} className="anchor"></a>
+            <Element name={props.id} className="anchor"></Element>
             <Grid fluid>
                 <Row>
                     <Col md={(props.tab === TabTitles.PREVIEW) ? 12 : 8}>
