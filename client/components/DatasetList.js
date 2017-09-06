@@ -9,7 +9,7 @@ const DatasetList = (props) => {
     const visibleDatasets = props.datasets.filter(dataset =>
         dataset.title.toLowerCase().indexOf(props.ui.filterText.toLowerCase()) !== -1)
 
-    if (visibleDatasets.length === 0) {
+    if (visibleDatasets.length === 0 && props.ui.filterText !== '') {
         return <EmptySearch />
     }
     return (
