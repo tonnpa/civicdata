@@ -8,6 +8,18 @@
         <title>Home | Civic Data Portal | Georgia Institute of Technology | Atlanta, GA</title>
         <meta name="description" content="An archive of environmental datasets with a geographic focus on Atlanta and the Proctor Creek Watershed.">
         <link rel="shortcut icon" href="{% webpack_static 'favicon.ico' %}">
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106487355-1"></script>
+        <script>
+            if (document.location.host === 'civicdata.lmc.gatech.edu') {
+                window.dataLayer = window.dataLayer || []
+                function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date())
+                gtag('config', 'UA-106487355-1')
+            } else {
+                console.log('Not sending data to Google Analytics')
+            }
+        </script>
     </head>
     <body>
         <div id="root"></div>
