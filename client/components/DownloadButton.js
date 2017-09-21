@@ -39,6 +39,4 @@ const DownloadButton = ({files}) => {
     )
 }
 
-
-
 export default DownloadButton
