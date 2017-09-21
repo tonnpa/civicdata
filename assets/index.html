@@ -17,6 +17,7 @@
                 gtag('js', new Date())
                 gtag('config', 'UA-106487355-1')
             } else {
+                function gtag(){console.log(arguments)}
                 console.log('Not sending data to Google Analytics')
             }
         </script>
