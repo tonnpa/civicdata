@@ -10,6 +10,30 @@ import Preview from './Preview'
 import Snapshot from './Snapshot'
 import {FileFormats, TabTitles} from '../constants'
 
+function trackDescriptionView(datasetId) {
+    gtag('event', 'view_dataset_description', {
+        'event_category': 'datasets',
+        'event_action': 'view_description',
+        'event_label': datasetId,
+    })
+}
+
+function trackMetaView(datasetId) {
+    gtag('event', 'view_dataset_meta', {
+        'event_category': 'datasets',
+        'event_action': 'view_meta',
+        'event_label': datasetId,
+    })
+}
+
+function trackPreview(datasetId) {
+    gtag('event', 'preview_dataset', {
+        'event_category': 'datasets',
+        'event_action': 'preview',
+        'event_label': datasetId,
+    })
+}
+
 const Dataset = (props) => {
     const hasPreviewFormat = files => {
         let hasPreview = false
@@ -30,16 +54,25 @@ const Dataset = (props) => {
                     <Col md={(props.tab === TabTitles.PREVIEW) ? 12 : 8}>
                         <h2>{props.title}</h2>
                         <Tabs id="dataset-details" onSelect={(tab) => props.onSelectTab(props.id, tab)}>
-                            <Tab title="Description" eventKey={TabTitles.DESCRIPTION}>
+                            <Tab title="Description" eventKey={TabTitles.DESCRIPTION}
+                                 onEntering={() => {
+                                     trackDescriptionView(props.id)
+                                 }}>
                                 <DatasetDetails {...props}/>
                             </Tab>
                             <Tab title="Meta Information" eventKey={TabTitles.METADATA}
-                                 onEnter={() => props.onMetaLoad(props.id)}
+                                 onEntering={() => {
+                                     props.onMetaLoad(props.id)
+                                     trackMetaView(props.id)
+                                 }}
                                  disabled={!hasPreviewFormat(props.files)}>
                                 <MetaInfo content={props.metainfo}/>
                             </Tab>
                             <Tab title="Preview" eventKey={TabTitles.PREVIEW}
-                                 onEnter={() => props.onPreviewLoad(props.id)}
+                                 onEntering={() => {
+                                     props.onPreviewLoad(props.id)
+                                     trackPreview(props.id)
+                                 }}
                                  disabled={!hasPreviewFormat(props.files)}>
                                 <Preview isFetchingRecords={props.isFetchingRecords}
                                          previewContent={props.previewContent}/>
