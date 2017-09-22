@@ -11,7 +11,7 @@ def import_dataset_information():
     models.MetaInfo.objects.all().delete()
 
     # import from spreadsheet
-    dataset_df = pd.read_excel('assets/data/DatasetInformation.xlsx')
+    dataset_df = pd.read_excel('assets/datasets/DatasetInformation.xlsx')
     dataset_df = dataset_df.where(pd.notnull(dataset_df), None)
     for record in dataset_df.itertuples():
         try:
@@ -30,7 +30,7 @@ def import_dataset_information():
             print(ex)
     print('Importing Dataset Information has finished.')
 
-    files_df = pd.read_excel('assets/data/DatasetFiles.xlsx')
+    files_df = pd.read_excel('assets/datasets/DatasetFiles.xlsx')
     for record in files_df.itertuples():
         try:
             data_file = models.DataFile(
@@ -39,15 +39,15 @@ def import_dataset_information():
                 format=record.Format,
             )
             if record.Format == FileFormats.CSV:
-                data_file.num_records = len(pd.read_csv('assets/data/{}'.format(record.FileName)))
+                data_file.num_records = len(pd.read_csv('assets/datasets/{}'.format(record.FileName)))
             elif record.Format == FileFormats.EXCEL:
-                data_file.num_records = len(pd.read_excel('assets/data/{}'.format(record.FileName)))
+                data_file.num_records = len(pd.read_excel('assets/datasets/{}'.format(record.FileName)))
             data_file.save()
         except ValueError as ex:
             print(ex)
     print('Importing Dataset Files has finished.')
 
-    metainfo_df = pd.read_excel('assets/data/DatasetMetaInformation.xlsx')
+    metainfo_df = pd.read_excel('assets/datasets/DatasetMetaInformation.xlsx')
     metainfo_df= metainfo_df.where(pd.notnull(metainfo_df), None)
     for record in metainfo_df.itertuples():
         try:
