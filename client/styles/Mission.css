@@ -1,0 +1,25 @@
+#mission {
+    background: #131F36;
+    background: linear-gradient(to bottom right, #144469, #131F36);
+    background-image: url("../../assets/media/proctor-creek-stream.jpg"), linear-gradient(to bottom right, #144469, #131F36);
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: white;
+    text-align: center;
+}
+
+#mission span {
+    color:#EEB211;
+}
+
+@media (min-width: 768px) {
+    #mission h1 {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #mission h1 {
+        font-size: large;
+    }
+}
