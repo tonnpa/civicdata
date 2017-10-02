@@ -28,7 +28,7 @@ def import_dataset_information():
             dataset.save()
         except ValueError as ex:
             print(ex)
-    print('Importing Dataset Information has finished.')
+    print('Importing Dataset Information has finished: {} dataset founds'.format(len(dataset_df)))
 
     files_df = pd.read_excel('assets/datasets/DatasetFiles.xlsx')
     for record in files_df.itertuples():
@@ -45,7 +45,7 @@ def import_dataset_information():
             data_file.save()
         except ValueError as ex:
             print(ex)
-    print('Importing Dataset Files has finished.')
+    print('Importing Dataset Files has finished: {} file found.'.format(len(files_df)))
 
     metainfo_df = pd.read_excel('assets/datasets/DatasetMetaInformation.xlsx')
     metainfo_df= metainfo_df.where(pd.notnull(metainfo_df), None)
@@ -60,4 +60,4 @@ def import_dataset_information():
             meta_info.save()
         except ValueError as ex:
             print(ex)
-    print('Importing Meta Information has finished.')
+    print('Importing Meta Information has finished: {} column description found.'.format(len(metainfo_df)))
