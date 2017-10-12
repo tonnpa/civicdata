@@ -25,5 +25,9 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-
+# DjangoRestFramework
 urlpatterns += restapi_urls
+# ReactRouter
+urlpatterns += [
+    url(r'^.*/$', views.index)
+]
