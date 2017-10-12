@@ -5,7 +5,7 @@ const BundleTracker = require('webpack-bundle-tracker')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-    entry: './client/store/index.js',
+    entry: './client/index.js',
     output: {
         path: Path.resolve('assets'),
         publicPath: '/static/',

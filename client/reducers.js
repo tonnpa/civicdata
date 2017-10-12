@@ -1,8 +1,9 @@
 'use strict'
 
 import {combineReducers} from 'redux'
-import ActionTypes from '../actions/ActionTypes'
-import {TabTitles} from '../constants'
+import {routerReducer as routing} from 'react-router-redux'
+import ActionTypes from './actions/ActionTypes'
+import {TabTitles} from './constants'
 
 function getIds(datasets){
     return datasets.map(dataset => dataset.id)
@@ -169,5 +170,6 @@ export default combineReducers({
         isFetchingMetadata,
         isImageOpen,
         selectedTab
-    })
+    }),
+    routing,
 })
