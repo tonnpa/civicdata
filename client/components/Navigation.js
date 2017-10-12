@@ -22,6 +22,11 @@ const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
                     <SearchBar filterText={filterText}
                                onSearchInputChange={onSearchInputChange}/>
                 </Navbar.Form>
+                <Navbar.Text pullRight>
+                    <Navbar.Link href="/register">
+                        Register
+                    </Navbar.Link>
+                </Navbar.Text>
                 <Nav pullRight>
                     <NavDropdown eventKey={1} title="Datasets" id="datasets-dropdown">
                         {datasets.map(dataset =>
