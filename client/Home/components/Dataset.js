@@ -8,7 +8,7 @@ import DatasetDetails from './DatasetDetails'
 import MetaInfo from './MetaInfo'
 import Preview from './Preview'
 import Snapshot from './Snapshot'
-import {FileFormats, TabTitles} from '../constants'
+import {FileFormats, TabTitles} from '../../constants'
 
 function trackDescriptionView(datasetId) {
     gtag('event', 'view_dataset_description', {

@@ -5,7 +5,7 @@
 
 import React from 'react'
 import Tag from './Tag'
-import {FileFormats, TagStyles} from '../constants'
+import {FileFormats, TagStyles} from '../../constants'
 
 function getFormatTags(files) {
     const formats = files.map(file => file.format)

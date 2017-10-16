@@ -1,13 +1,13 @@
 'use strict'
 
 import React from 'react'
-import CoverImage from '../components/CoverImage'
-import Footer from '../components/Footer'
-import Mission from '../components/Mission'
+import CoverImage from './CoverImage'
+import Footer from './Footer'
+import Mission from './Mission'
 import DatasetList from '../containers/DatasetList'
 import Navigation from '../containers/Navigation'
 
-const App = () => (
+const Home = () => (
     <div>
         <Navigation />
         <CoverImage />
@@ -17,4 +17,4 @@ const App = () => (
     </div>
 )
 
-export default App
+export default Home

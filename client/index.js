@@ -16,10 +16,10 @@ import fetch from 'isomorphic-fetch'
 import jQuery from 'jquery'
 
 import {initializeState} from './actions/Actions'
-import App from './components/App'
+import Home from './Home/components/Home'
 import Auth from './auth/Auth'
-import Callback from './components/Callback'
-import Register from './components/Register'
+import Callback from './Registration/components/Callback'
+import Register from './Registration/components/Register'
 import history from './history'
 import appReducer from './reducers'
 
@@ -56,7 +56,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div>
-                <Route exact path="/" render={props => <App auth={auth} {...props} />}/>
+                <Route exact path="/" render={props => <Home auth={auth} {...props} />}/>
                 <Route path="/register" render={props => <Register auth={auth} {...props}/>}/>
                 <Route path="/callback" render={props => {
                     handleAuthentication(props)

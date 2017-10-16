@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {Image, Modal, Well} from 'react-bootstrap'
-import {TabTitles} from '../constants'
+import {TabTitles} from '../../constants'
 
 const Snapshot = ({image_file_name, title, caption, tab, isOpen, onToggle}) => (
     <div>

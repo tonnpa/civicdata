@@ -9,14 +9,14 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
-@import url('Dataset.css');
-@import url('EmptySearch.css');
-@import url('Footer.css');
-@import url('ImageModal.css');
-@import url('Loader.css');
-@import url('MetaInfo.css');
-@import url('Mission.css');
-@import url('Navigation.css');
+@import url('../Home/styles/Dataset.css');
+@import url('../Home/styles/EmptySearch.css');
+@import url('../Home/styles/Footer.css');
+@import url('../Home/styles/ImageModal.css');
+@import url('../Home/styles/Loader.css');
+@import url('../Home/styles/MetaInfo.css');
+@import url('../Home/styles/Mission.css');
+@import url('../Home/styles/Navigation.css');
 
 body {
     background-color: #323232;

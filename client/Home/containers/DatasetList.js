@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux'
 import DatasetList from '../components/DatasetList'
-import {fetchMeta, fetchRecords, selectTab, toggleImage} from '../actions/Actions'
+import {fetchMeta, fetchRecords, selectTab, toggleImage} from '../../actions/Actions'
 
 const mapStateToProps = state => state
 
