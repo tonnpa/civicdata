@@ -9,6 +9,7 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
+@import url('../Contribution/styles/Contribute.scss');
 @import url('../Home/styles/Dataset.css');
 @import url('../Home/styles/EmptySearch.css');
 @import url('../Home/styles/Footer.css');
