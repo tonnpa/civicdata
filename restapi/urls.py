@@ -11,4 +11,5 @@ urlpatterns = router.urls
 
 urlpatterns += [
     url(r'^preview$', views.preview),
+    url(r'^submit$', views.submit_dataset),
 ]

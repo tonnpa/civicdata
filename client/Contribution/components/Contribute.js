@@ -1,75 +1,119 @@
 'use strict'
 
 import React from 'react'
-import {Button, Checkbox, Col, ControlLabel, Form, FormControl, FormGroup, Grid, Table} from 'react-bootstrap'
+import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid} from 'react-bootstrap'
+import fetch from 'isomorphic-fetch'
 
-const Contribute = () => (
-    <Grid id="data-contribution" fluid>
-        <h1>Contribute a new dataset</h1>
-        <Form action="/some-page-to-submit" horizontal>
-            <FormGroup controlId="dataset-title">
-                <Col componentClass={ControlLabel} sm={2}>Dataset title</Col>
-                <Col sm={10}><FormControl type="text" placeholder="What is your data about?"/></Col>
-            </FormGroup>
+import DjangoCSRFToken from '../../auth/DjangoCSRFToken'
+import Collector from './Collector'
+import Metadata from './Metadata'
+import Title from './Title'
+import Year from './Year'
 
-            <FormGroup controlId="dateset-collector">
-                <Col componentClass={ControlLabel} sm={2}>Collector</Col>
-                <Col sm={10}><FormControl type="text" placeholder="Who collected the data?"/></Col>
-            </FormGroup>
+const MAX_TITLE_LENGTH = 96
+const MAX_COLLECTOR_LENGTH = 64
 
-            <FormGroup controlId="dataset-year">
-                <Col componentClass={ControlLabel} sm={2}>Year</Col>
-                <Col sm={2}>
-                    <FormControl componentClass="select" defaultValue={new Date().getFullYear()}>
-                        {Array(150).fill().map((_, year) =>
-                            <option value={year+1900} key={year}>{year+1900}</option>)}
-                    </FormControl>
-                </Col>
-                <Col sm={1}><Checkbox>To</Checkbox></Col>
-                <Col sm={2}>
-                    <FormControl componentClass="select" defaultValue={new Date().getFullYear()} disabled>
-                        {Array(150).fill().map((_, year) =>
-                            <option value={year+1900} key={year}>{year+1900}</option>)}
-                    </FormControl>
-                </Col>
-                <Col sm={5}/>
-            </FormGroup>
+class Contribute extends React.Component {
+    constructor () {
+        super()
+        this.state = {
+            title: '',
+            titleCharactersLeft: MAX_TITLE_LENGTH,
+            collector: '',
+            collectorCharactersLeft: MAX_COLLECTOR_LENGTH,
+            yearFrom: new Date().getFullYear(),
+            yearRange: false,
+            yearTo: 0,
+        }
 
-            <FormGroup controlId="dataset-file">
-                <Col componentClass={ControlLabel} sm={2}>File</Col>
-                <Col sm={10}>
-                    {/*<FileUpload />*/}
-                    <FormControl type="file" label="File" />
-                </Col>
-            </FormGroup>
+        this.handleTitleChange = this.handleTitleChange.bind(this)
+        this.handleCollectorChange = this.handleCollectorChange.bind(this)
+        this.handleYearChange = this.handleYearChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
 
-            <FormGroup controlId="dataset-meta">
-                <Col componentClass={ControlLabel} sm={2}>Metadata</Col>
-                <Col sm={10}>
-                    <Table responsive bordered>
-                        <thead>
-                        <tr>
-                            <th>Column name</th>
-                            <th>Column description</th>
-                            <th>Notes</th>
-                        </tr>
-                        </thead>
-                        <tbody contentEditable={true}>
-                        <tr>
-                            <td>New Column Name</td>
-                            <td>What is the column about?</td>
-                            <td>Any additional explanation to understand the data?</td>
-                        </tr>
-                        </tbody>
-                    </Table>
-                    <Button>+ Add New Column</Button>
-                </Col>
-            </FormGroup>
-            <Col smOffset={10} sm={2}>
-                <Button bsStyle="warning">Submit Dataset</Button>
-            </Col>
-        </Form>
-    </Grid>
-)
+    handleTitleChange(event) {
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+            [name]: value,
+            titleCharactersLeft: MAX_TITLE_LENGTH - value.length,
+        })
+    }
+
+    handleCollectorChange(event) {
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+            [name]: value,
+            collectorCharactersLeft: MAX_COLLECTOR_LENGTH - value.length,
+        })
+    }
+
+    handleYearChange(event) {
+        const target = event.target
+        if (target.type === 'checkbox') {
+            this.setState({
+                yearRange: target.checked
+            })
+        } else {
+            this.setState({
+                [target.name]: parseInt(target.value)
+            })
+        }
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        const form = new FormData(document.getElementById('dataset-form'))
+        fetch('/submit', {
+            credentials: 'include',
+            method: 'post',
+            body: form,
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+    }
+
+    render() {
+        return (
+            <Grid id="data-contribution" fluid>
+                <h1>Contribute a new dataset</h1>
+                <Form id="dataset-form" onSubmit={this.handleSubmit} horizontal>
+                    <DjangoCSRFToken />
+
+                    <Title value={this.state.title}
+                           charactersLeft={this.state.titleCharactersLeft}
+                           maxLength={MAX_TITLE_LENGTH}
+                           onChange={this.handleTitleChange}/>
+
+                    <Collector value={this.state.collector}
+                               charactersLeft={this.state.collectorCharactersLeft}
+                               maxLength={MAX_COLLECTOR_LENGTH}
+                               onChange={this.handleCollectorChange}/>
+
+                    <Year yearFrom={this.state.yearFrom}
+                          yearTo={this.state.yearTo}
+                          isRange={this.state.yearRange}
+                          onChange={this.handleYearChange}/>
+
+                    {/*<FormGroup controlId="dataset-file">*/}
+                        {/*<Col componentClass={ControlLabel} sm={2}>File</Col>*/}
+                        {/*<Col sm={10}>*/}
+                            {/*/!*<FileUpload />*!/*/}
+                            {/*<FormControl type="file" label="File" />*/}
+                        {/*</Col>*/}
+                    {/*</FormGroup>*/}
+
+                    {/*<Metadata />*/}
+
+                    <Col smOffset={10} sm={2}>
+                        <Button bsStyle="warning" type="submit">Submit Dataset</Button>
+                    </Col>
+                </Form>
+            </Grid>
+        )
+    }
+}
 
 export default Contribute

@@ -39,4 +39,13 @@ def preview(request):
         'columns': data.columns.tolist(),
         'values': data.values.tolist()
     })
-    # return JsonResponse({'results': data.head(10).to_dict(orient='records')})
+
+
+def submit_dataset(request):
+    print('==========================================')
+    print(request.method)
+    print(request.POST.dict())
+    print('==========================================')
+    return JsonResponse({
+        'POST': request.POST.dict()
+    })

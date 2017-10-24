@@ -13,7 +13,6 @@ import {applyMiddleware, createStore} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import fetch from 'isomorphic-fetch'
-import jQuery from 'jquery'
 
 import {initializeState} from './actions/Actions'
 import Auth from './auth/Auth'
@@ -31,7 +30,6 @@ const store = createStore(appReducer,
     applyMiddleware(thunkMiddleware, loggerMiddleware)
 )
 
-window.$ = window.jQuery = jQuery
 if (DEBUG) {
     window.store = store
 }
