@@ -1,26 +1,3 @@
-/** Cover Image **/
-
-.img-header {
-    margin-top: 50px;
-    background-image: url("../../../assets/media/gt-civicdata.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 400px;
-}
-
-@media only screen and (max-width: 768px) {
-    .img-header {
-        height: 200px;
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    .img-header {
-        height: 150px;
-    }
-}
-
 /** Navbar Background Color **/
 
 .navbar-default {
