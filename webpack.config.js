@@ -7,8 +7,8 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
     entry: './client/index.js',
     output: {
-        path: Path.resolve('assets'),
-        publicPath: '/static/',
+        path: Path.resolve('assets/dist'),
+        publicPath: '/public/',
         filename: '[name].js'
     },
     module: {

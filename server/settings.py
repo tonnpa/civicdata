@@ -71,7 +71,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'assets'),
+            os.path.join(BASE_DIR, 'assets/dist'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -140,7 +140,8 @@ USE_TZ = True
 STATIC_URL = '/public/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'assets/public'),
+    os.path.join(BASE_DIR, 'assets/dist'),
 ]
 
 WEBPACK_LOADER = {
@@ -149,7 +150,6 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
     }
 }
-
 
 # Django REST Framework
 REST_FRAMEWORK = {

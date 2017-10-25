@@ -35,7 +35,7 @@ const Footer = () => (
                 </Col>
                 <Col md={4} mdOffset={2} sm={6} smOffset={4} xs={6} xsOffset={3}>
                     <a href="http://maps.gatech.edu/">
-                        <Image id="gt-map" src={`/public/gt-map.jpg`}
+                        <Image id="gt-map" src={`/public/media/gt-map.jpg`}
                                alt="Map of Georgia Tech"
                                responsive/>
                     </a>
@@ -46,7 +46,7 @@ const Footer = () => (
                 </Col>
             </Row>
             <Row id="footer-closing">
-                <Image id="gt-logo" src={`/public/gt-logo-footer.png`}
+                <Image id="gt-logo" src={`/public/media/gt-logo-footer.png`}
                        className="center-block" alt="Georgia Tech"
                        responsive/>
                 <p>© Georgia Institute of Technology</p>
