@@ -22,6 +22,8 @@ from restapi.urls import urlpatterns as restapi_urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
+    url(r'^preview$', views.preview),
+    url(r'^submit$', views.submit_dataset),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
