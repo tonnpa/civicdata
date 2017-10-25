@@ -6,7 +6,7 @@ import FlaticonAttribution from './FlaticonAttribution'
 
 const Loader = () => (
     <div className="loader">
-        <Image src="/static/icons/characters/png/attention.png"
+        <Image src="/public/icons/characters/png/attention.png"
                className="loader-image" responsive/>
         <div className="spinner"></div>
         <FlaticonAttribution />

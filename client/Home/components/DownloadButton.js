@@ -19,7 +19,7 @@ const DownloadButton = ({files}) => {
     if (files.length === 1) {
         const file_name = files[0].name
         return (
-            <a href={`/static/datasets/${file_name}`}
+            <a href={`/public/datasets/${file_name}`}
                download={file_name}
                className="btn-sm btn-warning"
                role="button"
@@ -30,7 +30,7 @@ const DownloadButton = ({files}) => {
         <DropdownButton id="dataset-download" title="Download" bsSize="xsmall" bsStyle="warning">
             {files.map((file, idx) =>
                 <MenuItem key={idx} eventKey={idx}
-                          href={`/static/datasets/${file.name}`}
+                          href={`/public/datasets/${file.name}`}
                           download={file.name}
                           style={{textAlign: "right"}}
                           onClick={trackDownload(file.name)}>{file.format} <FaDownload/></MenuItem>

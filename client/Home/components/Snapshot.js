@@ -6,7 +6,7 @@ import {TabTitles} from '../../constants'
 
 const Snapshot = ({image_file_name, title, caption, tab, isOpen, onToggle}) => (
     <div>
-        <Image src={`/static/media/data-visualizations/${image_file_name}`}
+        <Image src={`/public/media/data-visualizations/${image_file_name}`}
                className="center-block"
                alt={`Dataset Snapshot of ${title}`}
                onClick={onToggle}
@@ -21,7 +21,7 @@ const Snapshot = ({image_file_name, title, caption, tab, isOpen, onToggle}) => (
                 <Well>
                     {caption}
                 </Well>
-                <Image src={`/static/media/data-visualizations/${image_file_name}`}
+                <Image src={`/public/media/data-visualizations/${image_file_name}`}
                        className="center-block" thumbnail responsive/>
             </Modal.Body>
         </Modal>
