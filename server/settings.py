@@ -137,12 +137,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/public/'
+PUBLIC_DIR = os.path.join(BASE_DIR, 'assets/public')
+DIST_DIR = os.path.join(BASE_DIR, 'assets/dist')
 
+STATIC_URL = '/public/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets/public'),
-    os.path.join(BASE_DIR, 'assets/dist'),
+    PUBLIC_DIR,
+    DIST_DIR,
 ]
+
+# Managing files uploaded by a user
+# https://docs.djangoproject.com/en/1.11/topics/files/#managing-files
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/uploads')
 
 WEBPACK_LOADER = {
     'DEFAULT': {
