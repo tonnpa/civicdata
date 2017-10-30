@@ -16,20 +16,18 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from . import views
 from restapi.urls import urlpatterns as restapi_urls
+from server.urls import urlpatterns as server_urls
+from server.views import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^preview$', views.preview),
-    url(r'^submit$', views.submit_dataset),
 ]
-
+urlpatterns += server_urls
 urlpatterns += staticfiles_urlpatterns()
 # DjangoRestFramework
 urlpatterns += restapi_urls
 # ReactRouter
 urlpatterns += [
-    url(r'^.*/$', views.index)
+    url(r'^.*/$', index)
 ]
