@@ -1,7 +1,7 @@
 {
-  "name": "wca_environmental",
+  "name": "CivicDataPortal",
   "version": "1.0.0",
-  "description": "environmental section of the Westside Community Alliance Data Dashboard",
+  "description": "An archive of open environmental datasets with a geographic focus on Atlanta and the Proctor Creek Watershed.",
   "main": "index.js",
   "author": "Phan Anh Nguyen",
   "license": "MIT",
