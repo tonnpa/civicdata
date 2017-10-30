@@ -1,14 +1,15 @@
 'use strict'
 
 import auth0 from 'auth0-js'
+import Cookies from 'js-cookie'
 import history from '../history'
 
 function setSession(authResult) {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+    Cookies.set('expires_at', expiresAt)
+    Cookies.set('access_token', authResult.accessToken)
+    Cookies.set('id_token', authResult.idToken)
     // navigate to the home route
     history.replace('/');
 }
@@ -36,9 +37,9 @@ export default class Auth {
 
     logout() {
         // Clear access token and ID token from local storage
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('expires_at');
+        Cookies.remove('access_token');
+        Cookies.remove('id_token');
+        Cookies.remove('expires_at');
         // navigate to the home route
         history.replace('/');
     }
@@ -47,7 +48,8 @@ export default class Auth {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 setSession(authResult);
-                history.replace('/');
+                // navigate to contribution after successful authentication
+                history.replace('/contribute');
             } else if (err) {
                 history.replace('/');
                 console.log(err);
@@ -58,7 +60,7 @@ export default class Auth {
     isAuthenticated() {
         // Check whether the current time is past the
         // access token's expiry time
-        const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-        return new Date().getTime() < expiresAt;
+        const expiresAt = Cookies.get('expires_at') || null;
+        return new Date().getTime() < JSON.parse(expiresAt);
     }
 }
