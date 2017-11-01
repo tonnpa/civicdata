@@ -4,8 +4,9 @@ import pandas as pd
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
-from restapi import models
+from restapi.models import DataFile
 from restapi.constants import FileFormats
+from server.models import Contribution
 
 
 def index(request):
@@ -13,7 +14,7 @@ def index(request):
 
 
 def preview(request):
-    data_file = models.DataFile.objects\
+    data_file = DataFile.objects\
         .exclude(format=FileFormats.SHAPEFILE)\
         .get(dataset_id=request.GET['id'])
 
@@ -35,11 +36,8 @@ def preview(request):
 
 
 def submit_dataset(request):
-    print(request.POST.dict())
-    print(request.COOKIES)
-
     dataset = request.FILES.get('file')
-    # if check won't be necessary once the client-side validation has been implemented
+    # check won't be necessary once the client-side validation has been implemented
     if not dataset:
         return JsonResponse({
             'ERROR': 'Missing attachment.'
@@ -47,7 +45,7 @@ def submit_dataset(request):
 
     # create contribution instance
     try:
-        contribution = models.Contribution(
+        contribution = Contribution(
             title=request.POST.get('title'),
             collector=request.POST.get('collector'),
             date_from=request.POST.get('yearFrom'),
@@ -61,6 +59,7 @@ def submit_dataset(request):
             'ERROR': 'Database error.'
         }, status=500)
 
+    # check if a file exists with the same name
     dataset_file_path = os.path.join(settings.MEDIA_ROOT, dataset.name)
     if os.path.exists(dataset_file_path):
         return JsonResponse({
