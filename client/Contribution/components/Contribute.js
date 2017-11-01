@@ -6,12 +6,17 @@ import fetch from 'isomorphic-fetch'
 
 import DjangoCSRFToken from '../../auth/DjangoCSRFToken'
 import Collector from './Collector'
-import Metadata from './Metadata'
 import Title from './Title'
 import Year from './Year'
+import {ruleRunner, run} from "../validation/RuleRunner"
+import {required} from "../validation/Rules"
 
 const MAX_TITLE_LENGTH = 96
 const MAX_COLLECTOR_LENGTH = 64
+
+const fieldValidations = [
+    ruleRunner('title', 'Dataset title', required)
+]
 
 class Contribute extends React.Component {
     constructor () {
@@ -24,47 +29,67 @@ class Contribute extends React.Component {
             yearFrom: new Date().getFullYear(),
             yearRange: false,
             yearTo: 0,
+
+            showErrors: false,
+            validationErrors: {},
         }
 
         this.handleTitleChange = this.handleTitleChange.bind(this)
         this.handleCollectorChange = this.handleCollectorChange.bind(this)
         this.handleYearChange = this.handleYearChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.errorFor = this.errorFor.bind(this)
+    }
+
+    componentWillMount() {
+        this.setState(Object.assign(this.state, {
+            validationErrors: run(this.state, fieldValidations)
+        }))
     }
 
     handleTitleChange(event) {
         const name = event.target.name
         const value = event.target.value
-        this.setState({
+        let newState = Object.assign(this.state, {
             [name]: value,
             titleCharactersLeft: MAX_TITLE_LENGTH - value.length,
         })
+        newState.validationErrors = run(newState, fieldValidations)
+        this.setState(newState)
     }
 
     handleCollectorChange(event) {
         const name = event.target.name
         const value = event.target.value
-        this.setState({
+        const newState = Object.assign(this.state, {
             [name]: value,
             collectorCharactersLeft: MAX_COLLECTOR_LENGTH - value.length,
         })
+        this.setState(newState)
     }
 
     handleYearChange(event) {
         const target = event.target
         if (target.type === 'checkbox') {
-            this.setState({
+            this.setState(Object.assign(this.state, {
                 yearRange: target.checked
-            })
+            }))
         } else {
-            this.setState({
+            this.setState(Object.assign(this.state, {
                 [target.name]: parseInt(target.value)
-            })
+            }))
         }
     }
 
     handleSubmit(event) {
         event.preventDefault()
+        this.setState(Object.assign(this.state, {
+            showErrors: true
+        }))
+        if (Object.keys(this.state.validationErrors).length !== 0) {
+            return null
+        }
+
         const form = new FormData(document.getElementById('dataset-form'))
         fetch('/submit', {
             credentials: 'include',
@@ -73,6 +98,10 @@ class Contribute extends React.Component {
         })
             .then(response => response.json())
             .then(data => console.log(data))
+    }
+
+    errorFor(field) {
+        return this.state.validationErrors[field] || ""
     }
 
     render() {
@@ -85,7 +114,9 @@ class Contribute extends React.Component {
                     <Title value={this.state.title}
                            charactersLeft={this.state.titleCharactersLeft}
                            maxLength={MAX_TITLE_LENGTH}
-                           onChange={this.handleTitleChange}/>
+                           onChange={this.handleTitleChange}
+                           showError={this.state.showErrors}
+                           errorMessage={this.errorFor('title')}/>
 
                     <Collector value={this.state.collector}
                                charactersLeft={this.state.collectorCharactersLeft}
@@ -97,13 +128,13 @@ class Contribute extends React.Component {
                           isRange={this.state.yearRange}
                           onChange={this.handleYearChange}/>
 
-                    {/*<FormGroup controlId="dataset-file">*/}
-                        {/*<Col componentClass={ControlLabel} sm={2}>File</Col>*/}
-                        {/*<Col sm={10}>*/}
-                            {/*/!*<FileUpload />*!/*/}
-                            {/*<FormControl type="file" label="File" />*/}
-                        {/*</Col>*/}
-                    {/*</FormGroup>*/}
+                    <FormGroup controlId="file">
+                        <Col componentClass={ControlLabel} sm={2}>File</Col>
+                        <Col sm={10}>
+                            {/*<FileUpload />*/}
+                            <FormControl type="file" name="file" label="File" />
+                        </Col>
+                    </FormGroup>
 
                     {/*<Metadata />*/}
 
