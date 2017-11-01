@@ -37,11 +37,17 @@ def preview(request):
 
 def submit_dataset(request):
     dataset = request.FILES.get('file')
-    # check won't be necessary once the client-side validation has been implemented
+    # check for attached file
     if not dataset:
         return JsonResponse({
-            'ERROR': 'Missing attachment.'
+            'ERROR': 'Missing dataset file.'
         }, status=400)
+
+    # limit maximum file size
+    if dataset.size > 200 * 1024 * 1024: # MB
+        return JsonResponse({
+            'ERROR': 'Dataset too large.'
+        })
 
     # create contribution instance
     try:
