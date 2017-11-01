@@ -6,16 +6,19 @@ import fetch from 'isomorphic-fetch'
 
 import DjangoCSRFToken from '../../auth/DjangoCSRFToken'
 import Collector from './Collector'
+import FileUpload from './FileUpload'
 import Title from './Title'
 import Year from './Year'
 import {ruleRunner, run} from "../validation/RuleRunner"
-import {required} from "../validation/Rules"
+import {required, maxFileSize} from "../validation/Rules"
 
 const MAX_TITLE_LENGTH = 96
 const MAX_COLLECTOR_LENGTH = 64
 
 const fieldValidations = [
-    ruleRunner('title', 'Dataset title', required)
+    ruleRunner('title', 'Dataset title', required),
+    ruleRunner('collector', 'Dataset collector', required),
+    ruleRunner('file', 'Dataset file', required, maxFileSize(200, 'fileSize')),
 ]
 
 class Contribute extends React.Component {
@@ -29,6 +32,8 @@ class Contribute extends React.Component {
             yearFrom: new Date().getFullYear(),
             yearRange: false,
             yearTo: 0,
+            file: '',
+            fileSize: 0,
 
             showErrors: false,
             validationErrors: {},
@@ -37,6 +42,7 @@ class Contribute extends React.Component {
         this.handleTitleChange = this.handleTitleChange.bind(this)
         this.handleCollectorChange = this.handleCollectorChange.bind(this)
         this.handleYearChange = this.handleYearChange.bind(this)
+        this.handleFileChange = this.handleFileChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.errorFor = this.errorFor.bind(this)
     }
@@ -61,10 +67,11 @@ class Contribute extends React.Component {
     handleCollectorChange(event) {
         const name = event.target.name
         const value = event.target.value
-        const newState = Object.assign(this.state, {
+        let newState = Object.assign(this.state, {
             [name]: value,
             collectorCharactersLeft: MAX_COLLECTOR_LENGTH - value.length,
         })
+        newState.validationErrors = run(newState, fieldValidations)
         this.setState(newState)
     }
 
@@ -79,6 +86,18 @@ class Contribute extends React.Component {
                 [target.name]: parseInt(target.value)
             }))
         }
+    }
+
+    handleFileChange(event) {
+        let newState = Object.assign(this.state, {
+            [event.target.name]: event.target.value,
+            fileSize: event.target.files[0].size || 0,
+        })
+        newState.validationErrors = run(newState, fieldValidations)
+        this.setState(newState)
+
+        const file = event.target.files[0]
+        console.log(file.size)
     }
 
     handleSubmit(event) {
@@ -121,22 +140,19 @@ class Contribute extends React.Component {
                     <Collector value={this.state.collector}
                                charactersLeft={this.state.collectorCharactersLeft}
                                maxLength={MAX_COLLECTOR_LENGTH}
-                               onChange={this.handleCollectorChange}/>
+                               onChange={this.handleCollectorChange}
+                               showError={this.state.showErrors}
+                               errorMessage={this.errorFor('collector')}/>
 
                     <Year yearFrom={this.state.yearFrom}
                           yearTo={this.state.yearTo}
                           isRange={this.state.yearRange}
                           onChange={this.handleYearChange}/>
 
-                    <FormGroup controlId="file">
-                        <Col componentClass={ControlLabel} sm={2}>File</Col>
-                        <Col sm={10}>
-                            {/*<FileUpload />*/}
-                            <FormControl type="file" name="file" label="File" />
-                        </Col>
-                    </FormGroup>
-
-                    {/*<Metadata />*/}
+                    <FileUpload value={this.state.file}
+                                onChange={this.handleFileChange}
+                                showError={this.state.showErrors}
+                                errorMessage={this.errorFor('file')}/>
 
                     <Col smOffset={10} sm={2}>
                         <Button bsStyle="warning" type="submit">Submit Dataset</Button>
