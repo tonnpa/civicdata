@@ -8,3 +8,6 @@ class Contribution(models.Model):
     date_to = models.CharField(max_length=16, null=True)
     file_name = models.CharField(max_length=64)
     # TODO: description, username, date of submission, image, image caption
+
+    def __str__(self):
+        return '{} | {} | {}'.format(self.title, self.collector, self.file_name)

@@ -14,6 +14,9 @@ class Dataset(models.Model):
     class Meta:
         ordering = ('title',)
 
+    def __str__(self):
+        return '{} | {} | {}'.format(self.id, self.title, self.collector)
+
 
 class DataFile(models.Model):
     dataset_id = models.ForeignKey(Dataset, on_delete=models.SET_NULL, null=True)
@@ -28,6 +31,9 @@ class DataFile(models.Model):
                               choices=FORMAT_CHOICES)
     num_records = models.IntegerField(null=True)
 
+    def __str__(self):
+        return '{} | {}'.format(self.name, self.format)
+
 
 class MetaInfo(models.Model):
     dataset_id = models.ForeignKey(Dataset)
@@ -37,3 +43,6 @@ class MetaInfo(models.Model):
 
     class Meta:
         unique_together = ('dataset_id', 'feature')
+
+    def __str__(self):
+        return '{} | {}'.format(self.dataset_id, self.feature)
