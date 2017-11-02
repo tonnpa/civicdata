@@ -6,12 +6,18 @@ import history from '../history'
 
 function setSession(authResult) {
     // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime())
     Cookies.set('expires_at', expiresAt)
     Cookies.set('access_token', authResult.accessToken)
     Cookies.set('id_token', authResult.idToken)
     // navigate to the home route
-    history.replace('/');
+    history.replace('/')
+}
+
+function clearSession() {
+    Cookies.remove('access_token')
+    Cookies.remove('id_token')
+    Cookies.remove('expires_at')
 }
 
 export default class Auth {
@@ -25,42 +31,40 @@ export default class Auth {
             scope: 'openid',
         })
 
-        this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
-        this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
+        this.login = this.login.bind(this)
+        this.logout = this.logout.bind(this)
+        this.handleAuthentication = this.handleAuthentication.bind(this)
+        this.isAuthenticated = this.isAuthenticated.bind(this)
     }
 
     login() {
-        this.auth0.authorize();
+        this.auth0.authorize()
     }
 
     logout() {
         // Clear access token and ID token from local storage
-        Cookies.remove('access_token');
-        Cookies.remove('id_token');
-        Cookies.remove('expires_at');
+        clearSession()
         // navigate to the home route
-        history.replace('/');
+        history.replace('/')
     }
 
     handleAuthentication() {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
-                setSession(authResult);
+                setSession(authResult)
                 // navigate to contribution after successful authentication
-                history.replace('/contribute');
+                history.replace('/contribute')
             } else if (err) {
-                history.replace('/');
-                console.log(err);
+                history.replace('/')
+                console.log(err)
             }
-        });
+        })
     }
 
     isAuthenticated() {
         // Check whether the current time is past the
         // access token's expiry time
-        const expiresAt = Cookies.get('expires_at') || null;
-        return new Date().getTime() < JSON.parse(expiresAt);
+        const expiresAt = Cookies.get('expires_at') || null
+        return new Date().getTime() < JSON.parse(expiresAt)
     }
 }
