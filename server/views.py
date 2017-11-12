@@ -25,7 +25,8 @@ def preview(request):
         data = pd.read_csv(os.path.join(settings.PUBLIC_DIR, 'datasets', data_file.name),
                            nrows=20)
     else:
-        # TODO: handle shapefile and other formats
+        # TODO: handle shape file and other formats
+        # TODO: handle shape file and other formats
         data = pd.DataFrame()
 
     data.fillna('', inplace=True)
@@ -49,6 +50,13 @@ def submit_dataset(request):
             'ERROR': 'Dataset too large.'
         })
 
+    # check if a file exists with the same name
+    dataset_file_path = os.path.join(settings.MEDIA_ROOT, dataset.name)
+    if os.path.exists(dataset_file_path):
+        return JsonResponse({
+            'ERROR': 'Dataset file name already exists.'
+        }, status=501)
+
     # create contribution instance
     try:
         contribution = Contribution(
@@ -57,6 +65,9 @@ def submit_dataset(request):
             date_from=request.POST.get('yearFrom'),
             date_to=request.POST.get('yearTo'),
             file_name=dataset.name,
+            username=request.POST.get('name'),
+            nickname=request.POST.get('nickname'),
+            email=request.POST.get('email'),
         )
         contribution.save()
     except ValueError as ex:
@@ -64,13 +75,6 @@ def submit_dataset(request):
         return JsonResponse({
             'ERROR': 'Database error.'
         }, status=500)
-
-    # check if a file exists with the same name
-    dataset_file_path = os.path.join(settings.MEDIA_ROOT, dataset.name)
-    if os.path.exists(dataset_file_path):
-        return JsonResponse({
-            'ERROR': 'Dataset file name already exists.'
-        }, status=501)
 
     # save uploaded file to server
     with open(dataset_file_path, 'wb') as saved_file:

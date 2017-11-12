@@ -28,7 +28,7 @@ export default class Auth {
             redirectUri: 'http://localhost:8000/callback',
             audience: 'https://civicdata.auth0.com/userinfo',
             responseType: 'token id_token',
-            scope: 'openid',
+            scope: 'openid profile email',
         })
 
         this.login = this.login.bind(this)
@@ -66,5 +66,17 @@ export default class Auth {
         // access token's expiry time
         const expiresAt = Cookies.get('expires_at') || null
         return new Date().getTime() < JSON.parse(expiresAt)
+    }
+
+    getUserInfo() {
+        return new Promise((resolve, reject) => {
+            this.auth0.client.userInfo(Cookies.get('access_token'), (err, user) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(user)
+                }
+            })
+        })
     }
 }

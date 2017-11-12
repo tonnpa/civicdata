@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import {Button, Col, ControlLabel, Form, FormControl, FormGroup, Grid} from 'react-bootstrap'
+import {Button, Col, Form, Grid} from 'react-bootstrap'
 import fetch from 'isomorphic-fetch'
 
 import DjangoCSRFToken from '../../auth/DjangoCSRFToken'
@@ -97,7 +97,6 @@ class Contribute extends React.Component {
         this.setState(newState)
 
         const file = event.target.files[0]
-        console.log(file.size)
     }
 
     handleSubmit(event) {
@@ -110,13 +109,23 @@ class Contribute extends React.Component {
         }
 
         const form = new FormData(document.getElementById('dataset-form'))
-        fetch('/submit', {
-            credentials: 'include',
-            method: 'post',
-            body: form,
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
+        // extend form data with user information from Auth0
+        this.props.auth.getUserInfo()
+            .then(user => {
+                form.set('name', user.name)
+                form.set('email', user.email)
+                form.set('nickname', user.nickname)
+            })
+            .then(() =>
+                fetch('/submit', {
+                    credentials: 'include',
+                    method: 'post',
+                    body: form,
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+            )
+            .catch(error => console.log(error))
     }
 
     errorFor(field) {
