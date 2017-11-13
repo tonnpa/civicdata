@@ -9,17 +9,17 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
-@import url('../Contribution/styles/Contribute.scss');
-@import url('../Contribution/styles/Confirmation.scss');
-@import url('../Home/styles/CoverImage.css');
-@import url('../Home/styles/Dataset.css');
-@import url('../Home/styles/EmptySearch.css');
-@import url('../Home/styles/Footer.css');
-@import url('../Home/styles/ImageModal.css');
-@import url('../Home/styles/Loader.css');
-@import url('../Home/styles/MetaInfo.css');
-@import url('../Home/styles/Mission.css');
-@import url('../Home/styles/Navigation.css');
+@import '../Contribution/styles/Contribute.scss';
+@import '../Contribution/styles/Confirmation.scss';
+@import '../Home/styles/CoverImage.css';
+@import '../Home/styles/Dataset.css';
+@import '../Home/styles/EmptySearch.css';
+@import '../Home/styles/Footer.css';
+@import '../Home/styles/ImageModal.css';
+@import '../Home/styles/Loader.css';
+@import '../Home/styles/MetaInfo.css';
+@import '../Home/styles/Mission.css';
+@import '../Home/styles/Navigation.css';
 
 body {
     background-color: #323232;
