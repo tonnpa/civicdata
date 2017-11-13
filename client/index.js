@@ -21,6 +21,7 @@ import appReducer from './reducers'
 import Home from './Home/components/Home'
 import Callback from './Registration/components/Callback'
 import Register from './Registration/components/Register'
+import Confirmation from './Contribution/components/Confirmation'
 import Contribute from './Contribution/components/Contribute'
 
 const auth = new Auth()
@@ -62,7 +63,8 @@ ReactDOM.render(
                     return <Callback auth={auth} {...props}/>}
                 }/>
                 <Route path="/contribute" render={props => <Contribute auth={auth} {...props}/>}/>
-            </div>  
+                <Route path="/success" render={props => <Confirmation auth={auth} {...props}/>}/>
+            </div>
         </Router>
     </Provider>,
     document.getElementById('root')

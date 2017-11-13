@@ -3,6 +3,7 @@
 import React from 'react'
 import {Button, Col, Form, Grid} from 'react-bootstrap'
 import fetch from 'isomorphic-fetch'
+import {Redirect} from 'react-router-dom'
 
 import DjangoCSRFToken from '../../auth/DjangoCSRFToken'
 import Collector from './Collector'
@@ -37,6 +38,8 @@ class Contribute extends React.Component {
 
             showErrors: false,
             validationErrors: {},
+
+            fireRedirect: false
         }
 
         this.handleTitleChange = this.handleTitleChange.bind(this)
@@ -125,6 +128,12 @@ class Contribute extends React.Component {
                     .then(response => response.json())
                     .then(data => console.log(data))
             )
+            .then(() => {
+                let newState = Object.assign(this.state, {
+                    fireRedirect: true
+                })
+                this.setState(newState)
+            })
             .catch(error => console.log(error))
     }
 
@@ -167,6 +176,7 @@ class Contribute extends React.Component {
                         <Button bsStyle="warning" type="submit">Submit Dataset</Button>
                     </Col>
                 </Form>
+                {this.state.fireRedirect && <Redirect to='/success'/>}
             </Grid>
         )
     }
