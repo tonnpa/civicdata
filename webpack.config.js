@@ -20,11 +20,20 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'autoprefixer-loader'],
+                use: [
+                    'style-loader',
+                    'css-loader?'.concat(process.env.DEBUG === 'true' ? 'sourceMap' : 'minimize'),
+                    'autoprefixer-loader',
+                ],
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'autoprefixer-loader', 'sass-loader'],
+                use: [
+                    'style-loader',
+                    'css-loader?'.concat(process.env.DEBUG === 'true' ? 'sourceMap' : 'minimize'),
+                    'autoprefixer-loader',
+                    'sass-loader'
+                ],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
