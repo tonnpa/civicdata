@@ -33,6 +33,15 @@
     background-color: white;
 }
 
+/** Navbar Links **/
+.navbar-default .navbar-link {
+    color: white;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #EEB211;
+}
+
 /** Datasets Dropdown Button **/
 
 #datasets-dropdown {

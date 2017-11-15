@@ -3,7 +3,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/css/bootstrap-theme.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-import './styles/civicdata.scss'
+import './styles/CivicData.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -19,10 +19,10 @@ import Auth from './auth/Auth'
 import history from './history'
 import appReducer from './reducers'
 import Home from './Home/components/Home'
-import Callback from './Registration/components/Callback'
-import Register from './Registration/components/Register'
-import Confirmation from './Contribution/components/Confirmation'
+import Callback from './Contribution/components/Callback'
+import Success from './Contribution/components/Success'
 import Contribute from './Contribution/components/Contribute'
+import Register from './Contribution/components/Register'
 
 const auth = new Auth()
 const DEBUG = (process.env.DEBUG === 'true')
@@ -63,7 +63,7 @@ ReactDOM.render(
                     return <Callback auth={auth} {...props}/>}
                 }/>
                 <Route path="/contribute" render={props => <Contribute auth={auth} {...props}/>}/>
-                <Route path="/success" render={props => <Confirmation auth={auth} {...props}/>}/>
+                <Route path="/success" render={props => <Success auth={auth} {...props}/>}/>
             </div>
         </Router>
     </Provider>,

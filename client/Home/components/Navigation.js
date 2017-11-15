@@ -25,7 +25,7 @@ const Navigation = ({datasets = [], filterText, onSearchInputChange}) => (
                     </Navbar.Form>
                     <Navbar.Text pullRight>
                         <Navbar.Link href="/register">
-                            Register
+                            Share Data
                         </Navbar.Link>
                     </Navbar.Text>
                     <Nav pullRight>

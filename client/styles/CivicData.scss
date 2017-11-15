@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab');
+@import './Colors';
+@import '../Contribution/styles/Callback';
+@import '../Contribution/styles/Contribute';
+@import '../Contribution/styles/Register';
+@import '../Contribution/styles/Success';
+@import '../Home/styles/CoverImage';
+@import '../Home/styles/Dataset';
+@import '../Home/styles/EmptySearch';
+@import '../Home/styles/Footer';
+@import '../Home/styles/ImageModal';
+@import '../Home/styles/Loader';
+@import '../Home/styles/MetaInfo';
+@import '../Home/styles/Mission';
+@import '../Home/styles/Navigation';
+
+body {
+  background-color: $darkgrey;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+}
+
+.content {
+  background-image: url("/public/media/background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -1,8 +1,17 @@
 #data-contribution {
-  color: white;
-}
+  padding-top: 2em;
+  padding-bottom: 4em;
 
-.validation-error {
-  color: indianred;
-  margin-top: 0.25em;
+  background-color: lightgoldenrodyellow;
+  color: $darkblue;
+
+  h1 {
+    padding-bottom: 1em;
+    text-align: center;
+  }
+
+  .validation-error {
+    color: indianred;
+    margin-top: 0.25em;
+  }
 }

@@ -1,0 +1,19 @@
+#success {
+  /* Positioning */
+  min-height: 12em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  /* Color */
+  background-color: lightgoldenrodyellow;
+  color: $darkblue;
+
+  /* Text */
+  text-align: center;
+
+  a, button {
+    margin: 6em 2em 0 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+}
