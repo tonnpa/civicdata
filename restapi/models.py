@@ -30,7 +30,7 @@ class DataFile(models.Model):
 
 
 class MetaInfo(models.Model):
-    dataset_id = models.ForeignKey(Dataset)
+    dataset_id = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     feature = models.CharField(max_length=32)
     description = models.TextField()
     comment = models.TextField(null=True)
